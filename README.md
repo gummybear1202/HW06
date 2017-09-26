@@ -1,3 +1,8 @@
+# HW03 REQS
+Github repo: https://github.com/gummybear1202/CS4550_Microblog_Dev.git
+deployed app: http://microblog.rosaline.im
+
+
 # Microblog
 
 To start your Phoenix server:
