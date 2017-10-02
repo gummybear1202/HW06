@@ -12,24 +12,53 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-light bg-light navbar-expand-md">
+    <a class="navbar-brand" href="#">word.</a>
+    <button class="navbar-toggler" type="button"
+    data-toggle="collapse" data-target="#main-navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav mr-auto">
+      <!-- News feed -->
+      <li class="nav-item">
+        <%= link "new?", to: message_path(@conn, :index), class: "nav-link"%>
+      </li>
+      <!-- For looking at the user's own info -->
+      <li class="nav-item">
+        <%= link "I.", to: user_path(@conn, :index), class: "nav-link" %>
+      </li>
+      <!-- For looking at the users this user is following -->
+      <li class="nav-item">
+        <%= link "You.", to: following_path(@conn, :index), class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div class="row">
+        <div class="col-sm-12 my-2">
+          <%= if get_flash(@conn, :info) do %> 
+            <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+          <% end %>
+          <%= if get_flash(@conn, :error) do %> 
+            <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+          <% end %>
+        </div>
+</div>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= render @view_module, @view_template, assigns %>
+    </div>
+  </div>
 
-    </div> <!-- /container -->
+
+</div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

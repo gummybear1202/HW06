@@ -1,0 +1,26 @@
+<h2>Listing Followings</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Following email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for following <- @followings do %>
+    <tr>
+      <td><%= following.following_email %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: following_path(@conn, :show, following), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: following_path(@conn, :edit, following), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: following_path(@conn, :delete, following), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Following", to: following_path(@conn, :new) %></span>

@@ -3,13 +3,12 @@
 <ul>
 
   <li>
-    <strong>User:</strong>
-    <%= @message.user %>
-  </li>
-
-  <li>
     <strong>Desc:</strong>
     <%= @message.desc %>
+  </li>
+  <li>
+    <strong>User_id:</strong>
+    <%= @message.user_id %>
   </li>
 
 </ul>
