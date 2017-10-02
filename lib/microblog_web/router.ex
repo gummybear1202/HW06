@@ -1,5 +1,6 @@
 defmodule MicroblogWeb.Router do
   use MicroblogWeb, :router
+  import MicroblogWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,6 +8,9 @@ defmodule MicroblogWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_user
+
+
   end
 
   pipeline :api do
@@ -19,6 +23,9 @@ defmodule MicroblogWeb.Router do
     resources "/users", UserController
     resources "/followings", FollowingController
     resources "/followers", FollowerController
+    resources "/follows", FollowController
+    post "/sessions", SessionController, :login
+    delete "/sessions", SessionController, :logout
 
     get "/", PageController, :index
   end

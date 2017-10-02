@@ -29,7 +29,8 @@ defmodule MicroblogWeb.UserController do
     user = Blog.get_user!(id)
     message = Blog.change_message(%Microblog.Blog.Message{user_id: id})
     following = Blog.change_following(%Microblog.Blog.Following{user_id: id})
-    render(conn, "show.html", user: user, message: message, following: following)
+    follow = Blog.change_follow(%Microblog.Blog.Follow{following_user_id: id})
+    render(conn, "show.html", user: user, message: message, following: following, follow: follow)
   end
 
   def edit(conn, %{"id" => id}) do

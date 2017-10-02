@@ -23,6 +23,7 @@
 
   <%= hidden_input f, :user_id %>
   <%= hidden_input f, :message_id %>
+  <%= hidden_input f, :user_email %>
 
   <div class="form-group">
     <%= label f, :desc, class: "control-label" %>
@@ -54,5 +55,19 @@
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= form_for @follow, follow_path(@conn, :create), fn f -> %>
+  <%= if @follow.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= hidden_input f, :following_user_id %>
+
+  <div class="form-group">
+    <%= submit "Follow", class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -4,13 +4,14 @@ defmodule MicroblogWeb.SessionController do
   alias Microblog.Blog
 
   def login(conn, %{"email" => email}) do
+    # require IEx; Iex.pry
     user = Blog.get_user_by_email!(email)
 
     if user do
       conn
       |> put_session(:user_id, user.id)
-      |> put_flash(:info, "Logged in as #{user.email}")
-      |> redirect(to: user_path(conn, :index))
+      |> put_flash(:info, "Logged in as #{user.user_email}")
+      |> redirect(to: user_path(conn, :show, user.id))
     else
       conn
       |> put_session(:user_id, nil)
