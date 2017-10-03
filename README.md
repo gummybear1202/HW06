@@ -22,8 +22,9 @@ Click 'show' on another user (user1@g...)
 
 Click 'follow user' will make the current logged in user the follower, and following the viewing user
 
-Blue tag on top proves that it's been added to the DB, even though the follow page doesn't show the user_ids
+Blue tag on top proves that it's been added to the DB, if clicking into show for 'follow', the corresponding ids are shown.
 
+**does contain extra resources, the unused tables are 'following' and 'follower', the correct resource for follow is called 'follow'
 
 # Microblog
 
