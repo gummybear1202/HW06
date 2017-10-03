@@ -3,12 +3,12 @@ defmodule Microblog.Blog.User do
   import Ecto.Changeset
   alias Microblog.Blog.User
   alias Microblog.Blog.Message
-  alias Microblog.Blog.Following
+  alias Microblog.Blog.Follow
 
   schema "users" do
     field :user_email, :string
     has_many :messages, Message
-    has_many :followings, Following
+    has_many :follows, Follow
     timestamps()
   end
 

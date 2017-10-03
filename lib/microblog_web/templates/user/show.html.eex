@@ -44,6 +44,7 @@
   <% end %>
 
   <%= hidden_input f, :following_user_id %>
+  <%= hidden_input f, :follower_user_id %>
 
   <div class="form-group">
     <%= submit "Follow User", class: "btn btn-primary" %>
