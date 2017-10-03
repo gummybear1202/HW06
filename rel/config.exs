@@ -37,6 +37,7 @@ environment :prod do
   set include_erts: true
   set include_src: false
   set cookie: :"J)v[!r2@9FWW3iYccM`.epLGZpbnr`r&]l9$&!3`4{Bh^M/pu{6QR|=BM}Fl1WDQ"
+end
 # You may define one or more releases in this file.
 # If you have not set a default release, or selected one
 # when running `mix release`, the first release in the file
