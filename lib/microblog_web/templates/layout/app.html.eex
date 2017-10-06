@@ -31,7 +31,7 @@
       </li>
       <!-- For looking at the users this user is following -->
       <li class="nav-item">
-        <%= link "You.", to: following_path(@conn, :index), class: "nav-link" %>
+        <%= link "You.", to: follow_path(@conn, :index), class: "nav-link" %>
       </li>
     </ul>
   </div>
