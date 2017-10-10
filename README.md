@@ -2,29 +2,18 @@
 Github repo: https://github.com/gummybear1202/CS4550_Microblog_Dev.git
 deployed app: http://microblog.rosaline.im
 
+# credits
+setting up the deployment referenced this question to give permission to running the shell file:
+https://askubuntu.com/questions/38661/how-do-i-run-sh-files
+
+credits to Nat Tuck's repo:
+https://github.com/NatTuck/nu_mart
+
+the automate deployment file was referencing the deploy.sh from Nat Tuck's github repo. Several changes are made with path to adjust the path that my server points to. So the deployment can be done inside of the github directory.
+
 Behavior of the app:
 
-
-First you should be brought to the users page with all users (admin not implemented)
-
-Then login on top using rosaline@gmail.com (since this is an existing user)
-
-After logging in, you're brought to the show page of that user
-	- which includes: user email, create a message, follow button
-
-During create in this page, after successfully creating a message, you should be able to see the created message with the current user_id
-
-Following is designed that when clicking the follow button, the currently viewing user should be the one being followed, the follower is the current in session.
-
-Click 'back' to view existing users
-
-Click 'show' on another user (user1@g...)
-
-Click 'follow user' will make the current logged in user the follower, and following the viewing user
-
-Blue tag on top proves that it's been added to the DB, if clicking into show for 'follow', the corresponding ids are shown.
-
-**does contain extra resources, the unused tables are 'following' and 'follower', the correct resource for follow is called 'follow'
+TODO
 
 # Microblog
 
