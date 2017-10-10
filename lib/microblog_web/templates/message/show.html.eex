@@ -41,6 +41,8 @@
   <h2>Add Like</h2>
   <button id="like-add-button" class="btn btn-primary"
           data-user_id="<%= @current_user.id %>">Like</button>
+  <button id="like-delete-button" class="btn btn-warning"
+          data-user_id="<%= @current_user.id %>">Unlike</button>
 </div>
 <% end %>
 

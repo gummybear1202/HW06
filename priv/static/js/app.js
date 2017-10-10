@@ -26728,6 +26728,7 @@ require("phoenix_html");
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+// this file contains references from Ryan Hughes repo
 
 var handlebars = require("handlebars"); // Brunch automatically concatenates all files in your
 // watched paths. Those paths can be configured at
@@ -26761,9 +26762,15 @@ $(function () {
   var bb = $($("#like-add-button")[0]);
   var u_id = bb.data('user_id');
 
+  var ll = $($("#like-delete-button")[0]);
+
+  var cur_data = [];
+
   function fetch_likes() {
     function got_likes(data) {
       console.log(data);
+      cur_data = data;
+
       var html = tmpl(data);
       dd.html(html);
     }
@@ -26789,9 +26796,33 @@ $(function () {
       method: "POST",
       success: fetch_likes
     });
+
+    $("#like-add-button").hide();
+    $("#like-delete-button").show();
+  }
+
+  function delete_like() {
+    var message_holder;
+    for (var li in cur_data.data) {
+      if (li.message_id == m_id) {
+        message_holder = li.message_id;
+      }
+    }
+    $.ajax({
+      url: path,
+      data: { message_id: 14 },
+      contentType: "application/json",
+      dataType: "json",
+      method: "DELETE",
+      success: fetch_likes
+    });
+
+    $("#like-add-button").show();
+    $("#like-delete-button").hide();
   }
 
   bb.click(add_like);
+  ll.click(delete_like);
 
   fetch_likes();
 });
