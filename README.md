@@ -11,9 +11,13 @@ https://github.com/NatTuck/nu_mart
 
 the automate deployment file was referencing the deploy.sh from Nat Tuck's github repo. Several changes are made with path to adjust the path that my server points to. So the deployment can be done inside of the github directory.
 
-Behavior of the app:
+# Behavior of Like:
+Requirement: should log in as one of an existing user: user1@gmail.com
+After successfully logs in, either by clicking on the 'new?' tab on the navigation bar, or directly access: https://microblog.rosaline.im/messages to view existing messages. Click on one message to show.
+In the show page, click 'like' will allow the current user to like a message.
+A card is shown with the current user's email indicating this user has liked this post.
 
-TODO
+*side note* accessing the https://microblog.rosaline.im/api/v1/likes bring up the json file for all the likes data
 
 # Microblog
 
