@@ -17,6 +17,8 @@ After successfully logs in, either by clicking on the 'new?' tab on the navigati
 In the show page, click 'like' will allow the current user to like a message.
 A card is shown with the current user's email indicating this user has liked this post.
 
+Click 'unlike' will delete the like for that message by the current user.
+
 *side note* accessing the https://microblog.rosaline.im/api/v1/likes bring up the json file for all the likes data
 
 # Microblog
