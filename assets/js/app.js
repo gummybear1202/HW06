@@ -39,9 +39,10 @@ $(function() {
 
   let bb = $($("#like-add-button")[0]);
   let u_id = bb.data('user_id');
+  let u_email = bb.data('user_email');
 
   let ll = $($("#like-delete-button")[0]);
-
+  u_email = bb.data('user_email');
   let cur_data = []
 
   function fetch_likes() {
@@ -80,15 +81,18 @@ $(function() {
   }
 
   function delete_like() {
-    var message_holder;
-    for (var li in cur_data.data) {
-      if (li.message_id == m_id) {
-        message_holder = li.message_id;
+      console.log(cur_data);
+    var message_holder = 15;
+    for (var i = 0; i < cur_data.data.length; i++) {
+      console.log(cur_data.data[i].message_id);
+      if (cur_data.data[i].message_id == m_id
+          && cur_data.data[i].user_email == u_email) {
+        console.log('if is triggered');
+        message_holder = cur_data.data[i].id;
       }
     }
       $.ajax({
-        url: path,
-        data: {message_id: 14},
+        url: path + "/" + message_holder,
         contentType: "application/json",
         dataType: "json",
         method: "DELETE",
