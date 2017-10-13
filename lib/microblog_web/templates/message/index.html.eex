@@ -24,3 +24,4 @@
 </table>
 
 <span><%= link "New Message", to: message_path(@conn, :new) %></span>
+

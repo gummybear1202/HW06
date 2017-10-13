@@ -26722,15 +26722,15 @@ require.register("js/app.js", function(exports, require, module) {
 
 require("phoenix_html");
 
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
+var _socket = require("./socket");
 
-// import socket from "./socket"
+var _socket2 = _interopRequireDefault(_socket);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 // this file contains references from Ryan Hughes repo
 
-var handlebars = require("handlebars"); // Brunch automatically concatenates all files in your
+// Brunch automatically concatenates all files in your
 // watched paths. Those paths can be configured at
 // config.paths.watched in "brunch-config.js".
 //
@@ -26743,7 +26743,12 @@ var handlebars = require("handlebars"); // Brunch automatically concatenates all
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
+var handlebars = require("handlebars");
 
+// Import local files
+//
+// Local files can be imported directly using relative
+// paths "./socket" or full ones "web/static/js/socket".
 
 $(function () {
   if (!$("#likes-template").length > 0) {
@@ -26895,7 +26900,7 @@ var socket = new _phoenix.Socket("/socket", { params: { token: window.userToken 
 socket.connect();
 
 // Now that you are connected, you can join channels with a topic:
-var channel = socket.channel("topic:subtopic", {});
+var channel = socket.channel("feed:lobby", {});
 channel.join().receive("ok", function (resp) {
   console.log("Joined successfully", resp);
 }).receive("error", function (resp) {
