@@ -5,7 +5,7 @@
 // and connect at the socket path in "lib/web/endpoint.ex":
 import {Socket} from "phoenix"
 
-let socket = new Socket("/socket", {params: {token: window.userToken}});
+let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 // When you connect, you'll often need to authenticate the client.
 // For example, imagine you have an authentication plug, `MyAuth`,
@@ -51,26 +51,26 @@ let socket = new Socket("/socket", {params: {token: window.userToken}});
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
-socket.connect();
+socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("feed:lobby", {});
-let messageField = document.querySelector("#message-field");
-let feedsContainer = document.querySelector("#feeds");
-
-messageField.addEventListener("keypress", event => {
-  channel.push("new_msg", {body: messageField.value})
-  messageField.value = ""
-});
-
-channel.on("new_msg", payload => {
-  let msg_item = document.createElement("li");
-  msg_item.innerText = '[${Date()}] $(payload.body)'
-  feedsContainer.appendChild(msg_item)
-});
+let channel = socket.channel("feed:lobby", {})
+// let messageField = document.querySelector("#message-field")
+// let feedsContainer = document.querySelector("#feeds")
+//
+// messageField.addEventListener("keypress", event => {
+//   channel.push("new_msg", {body: messageField.value})
+//   messageField.value = ""
+// })
+//
+// channel.on("new_msg", payload => {
+//   let msg_item = document.createElement("li");
+//   msg_item.innerText = '[${Date()}] $(payload.body)'
+//   feedsContainer.appendChild(msg_item)
+// })
 
 channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) });
-  .receive("error", resp => { console.log("Unable to join", resp) });
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
 
-export default socket;
+export default socket
