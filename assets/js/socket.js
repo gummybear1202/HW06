@@ -75,9 +75,9 @@ channel.on("new_msg", payload => {
 })
 
 // using part of the sample code from the phoenix example
-static sanitize(html){ return $("<div/>").text(html).html() }
+function sanitize(html){ return $("<div/>").text(html).html() }
 
-static messageTemplate(msg){
+function messageTemplate(msg){
   let username = this.sanitize(msg.user || "anonymous")
   let body     = this.sanitize(msg.body)
 
