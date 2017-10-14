@@ -69,7 +69,7 @@ $( "#message-field" ).keypress(function() {
 
 messageField.off("keypress").on("keypress", event => {
   if(event.keyCode === 13) {
-    channel.push("new_msg", {user: u_email.val(), body: messageField.val()})
+    channel.push("new_msg", {user: u_email, body: messageField.val()})
     messageField.val("")
   }
 })
