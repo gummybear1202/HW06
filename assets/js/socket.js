@@ -71,8 +71,19 @@ messageField.off("keypress").on("keypress", event => {
 })
 
 channel.on("new_msg", payload => {
-  feedsContainer.append(payload)
+  feedsContainer.append(this.messageTemplate(payload))
 })
+
+// using part of the sample code from the phoenix example
+static sanitize(html){ return $("<div/>").text(html).html() }
+
+static messageTemplate(msg){
+  let username = this.sanitize(msg.user || "anonymous")
+  let body     = this.sanitize(msg.body)
+
+  return(`<p><a href='#'>[${username}]</a>&nbsp; ${body}</p>`)
+}
+
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
