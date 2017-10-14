@@ -2,7 +2,7 @@
 </div>
 <%= if @current_user do %>
 <div id="message-user"
-     data-current_email="<%= @curernt_user.user_email %>">
+     data-current_email="<%= @current_user.user_email %>">
   &nbsp;
 </div>
 <% end %>
