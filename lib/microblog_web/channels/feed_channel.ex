@@ -11,9 +11,9 @@ defmodule MicroblogWeb.FeedChannel do
 
   # Channels can be used in a request/response fashion
   # by sending replies to requests from the client
-  def handle_in("new_msg", %{"body" => body}, socket) do
-    broadcast! socket, "new_msg", %{body: body}
-    {:noreply, socket}
+  def handle_in("new_msg", payload, socket) do
+    broadcast! socket, "new_msg", %{user: payload["user"], body: payload["body"]}
+    {:reply, {:ok, %{payload: payload["body"]}}, assign(socket, :user, payload["user"])}
   end
 
   def handle_out("new_msg", payload, socket) do
