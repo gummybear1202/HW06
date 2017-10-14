@@ -1,11 +1,19 @@
 <div id="feeds" class="container">
 </div>
+<%= if @current_user do %>
+<div id="message-user"
+     data-current_email="<%= @curernt_user.user_email %>">
+  &nbsp;
+</div>
+<% end %>
+
+
 <div id="footer">
 
   <div class="container">
     <div class="row">
       <input id="message-field" class="form-control" />
     </div>
-    
+
   </div>
 </div>

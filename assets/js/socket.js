@@ -58,6 +58,10 @@ let channel = socket.channel("feed:lobby", {})
 let feedsContainer = $("#feeds")
 let messageField = $("#message-field")
 
+  let bb = $($("#message-user")[0]);
+  let u_email = bb.data('current_email');
+  console.log(u_email);
+
 
 $( "#message-field" ).keypress(function() {
   console.log( "Handler for .keypress() called." );
