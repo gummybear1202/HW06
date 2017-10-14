@@ -71,7 +71,7 @@ messageField.off("keypress").on("keypress", event => {
 })
 
 channel.on("new_msg", payload => {
-  feedsContainer.append($("<div/>".text(msg_item).html()))
+  feedsContainer.append(payload)
 })
 
 channel.join()
