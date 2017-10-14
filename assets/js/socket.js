@@ -55,19 +55,19 @@ socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("feed:lobby", {})
-// let messageField = document.querySelector("#message-field")
-// let feedsContainer = document.querySelector("#feeds")
-//
-// messageField.addEventListener("keypress", event => {
-//   channel.push("new_msg", {body: messageField.value})
-//   messageField.value = ""
-// })
-//
-// channel.on("new_msg", payload => {
-//   let msg_item = document.createElement("li");
-//   msg_item.innerText = '[${Date()}] $(payload.body)'
-//   feedsContainer.appendChild(msg_item)
-// })
+let messageField = document.querySelector("#message-field")
+let feedsContainer = document.querySelector("#feeds")
+
+messageField.addEventListener("keypress", event => {
+  channel.push("new_msg", {body: messageField.value})
+  messageField.value = ""
+})
+
+channel.on("new_msg", payload => {
+  let msg_item = document.createElement("li");
+  msg_item.innerText = '[${Date()}] $(payload.body)'
+  feedsContainer.appendChild(msg_item)
+})
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
