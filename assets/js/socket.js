@@ -59,6 +59,10 @@ var $feedsContainer = $("#feeds")
 var $messageField = $("#message-field")
 
 
+$( "#message-field" ).keypress(function() {
+  console.log( "Handler for .keypress() called." );
+})
+
 messageField.addEventListener("keypress", event => {
   if(event.keyCode === 13) {
     channel.push("new_msg", {body: $messageField.val()})
