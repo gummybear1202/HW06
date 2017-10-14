@@ -78,8 +78,8 @@ channel.on("new_msg", payload => {
 function sanitize(html){ return $("<div/>").text(html).html() }
 
 function messageTemplate(msg){
-  let username = this.sanitize(msg.user || "anonymous")
-  let body     = this.sanitize(msg.body)
+  let username = sanitize(msg.user || "anonymous")
+  let body     = sanitize(msg.body)
 
   return(`<p><a href='#'>[${username}]</a>&nbsp; ${body}</p>`)
 }
