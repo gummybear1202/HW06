@@ -32,11 +32,12 @@ defmodule MicroblogWeb.Router do
     delete "/sessions", SessionController, :logout
 
     get "/", PageController, :index
+    get "/:ftag", FeedController, :show
   end
 
   # Other scopes may use custom stacks.
   scope "/api/v1", MicroblogWeb do
-     pipe_through :api
+    pipe_through :api
 
     resources "/likes", LikeController, except: [:new, :edit]
 
