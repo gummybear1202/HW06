@@ -3,7 +3,7 @@
 
     <div class="container">
       <div class="row">
-        <input id="message-field" class="form-control" / />
+        <input id="message-field" class="form-control" />
       </div>
 
     </div>
