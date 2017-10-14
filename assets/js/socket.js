@@ -63,15 +63,15 @@ $( "#message-field" ).keypress(function() {
   console.log( "Handler for .keypress() called." );
 })
 
-messageField.addEventListener("keypress", event => {
+messageField.off("keypress").on("keypress", event => {
   if(event.keyCode === 13) {
-    channel.push("new_msg", {body: $messageField.val()})
-    $messageField.val("")
+    channel.push("new_msg", {body: messageField.val()})
+    messageField.val("")
   }
 })
 
 channel.on("new_msg", payload => {
-  $feedsContainer.append($("<div/>".text(msg_item).html()))
+  feedsContainer.append($("<div/>".text(msg_item).html()))
 })
 
 channel.join()
