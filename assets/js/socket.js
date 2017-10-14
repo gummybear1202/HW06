@@ -84,6 +84,8 @@ function messageTemplate(msg){
   return(`<p><a href='#'>[${username}]</a>&nbsp; ${body}</p>`)
 }
 
+// end using the code
+
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
