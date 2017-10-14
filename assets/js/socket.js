@@ -71,7 +71,7 @@ messageField.off("keypress").on("keypress", event => {
 })
 
 channel.on("new_msg", payload => {
-  feedsContainer.append(this.messageTemplate(payload))
+  feedsContainer.append(messageTemplate(payload))
 })
 
 // using part of the sample code from the phoenix example
