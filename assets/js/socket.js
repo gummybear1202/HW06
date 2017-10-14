@@ -59,13 +59,15 @@ let messageField = document.querySelector("#message-field")
 let feedsContainer = document.querySelector("#feeds")
 
 messageField.addEventListener("keypress", event => {
-  channel.push("new_msg", {body: messageField.value})
-  messageField.value = ""
+  if(event.keyCode === 13) {
+    channel.push("new_msg", {body: messageField.value})
+    messageField.value = ""
+  }
 })
 
 channel.on("new_msg", payload => {
   let msg_item = document.createElement("li");
-  msg_item.innerText = '[${Date()}] $(payload.body)'
+  // msg_item.innerText = '[${Date()}] $(payload.body)'
   feedsContainer.appendChild(msg_item)
 })
 
