@@ -1,5 +1,5 @@
-defmodule Microblog.Web.FeedController do
-  use Microblog.Web, :controller
+defmodule MicroblogWeb.FeedController do
+  use MicroblogWeb, :controller
 
   def show(conn, %{"ftag" => ftag }) do
     render conn, "show.html"
