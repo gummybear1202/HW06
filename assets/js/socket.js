@@ -54,7 +54,43 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("feed:lobby", {})
+let feedsContainer = $("#feeds")
+let messageField = $("#message-field")
+
+  let bb = $($("#message-user")[0]);
+  let u_email = bb.data('current_email');
+  //console.log(u_email);
+
+
+$( "#message-field" ).keypress(function() {
+  console.log( "Handler for .keypress() called." );
+})
+
+messageField.off("keypress").on("keypress", event => {
+  if(event.keyCode === 13) {
+    channel.push("new_msg", {user: u_email, body: messageField.val()})
+    messageField.val("")
+  }
+})
+
+channel.on("new_msg", payload => {
+  feedsContainer.append(messageTemplate(payload))
+})
+
+// using part of the sample code from the phoenix example
+function sanitize(html){ return $("<div/>").text(html).html() }
+
+function messageTemplate(msg){
+  let username = sanitize(msg.user || "anonymous")
+  let body     = sanitize(msg.body)
+
+  return(`<p><a href='#'>[${username}]</a>&nbsp; ${body}</p>`)
+}
+
+// end using the code
+
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
