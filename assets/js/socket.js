@@ -103,6 +103,10 @@ let msgSubmit = $("#msg-submit")
   let mu_id = mm.data('user_id');
   let mu_email = mm.data('user_email');
 
+  console.log("getting messages-container" + msgContainer);
+  console.log("getting msg-field" + msgField);
+  console.log("getting msg-submit" + msgSubmit);
+  console.log("getting msg-user" + mm);
   console.log("current user's email" + mu_email);
   console.log("current user's id" + mu_id);
 

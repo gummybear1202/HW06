@@ -13,6 +13,7 @@
 <span><%= link "Back", to: user_path(@conn, :index) %></span>
 
 <h2> Message </h2>
+
 <%= if @current_user do %>
 <div id="msg-user"
      data-current_email="<%= @current_user.user_email %>"
@@ -20,6 +21,7 @@
   &nbsp;
 </div>
 <% end %>
+
 <%= form_for @message, message_path(@conn, :create), fn f -> %>
   <%= if @message.action do %>
     <div class="alert alert-danger">
