@@ -103,17 +103,26 @@ let msgSubmit = $("#msg-submit")
   let mu_id = mm.data('current_id');
   let mu_email = mm.data('current_email');
 
-  console.log("getting messages-container" + msgContainer);
-  console.log("getting msg-field" + msgField);
-  console.log("getting msg-submit" + msgSubmit);
-  console.log("getting msg-user" + mm);
-  console.log("current user's email" + mu_email);
-  console.log("current user's id" + mu_id);
-
-msgSubmit.off("keypress").on("keypress", event => {
+// click submit button
+msgSubmit.off("click").on("click", event => {
     console.log("submit is pressed")
     msgChannel.push("new_msg", {user: mu_email, body: msgField.val()})
     msgField.val("")
+})
+
+// press enter
+msgField.off("keypress").on("keypress", event => {
+  if(event.keyCode === 13) {
+    console.log("submit is pressed")
+
+    channel.push("new_msg", {user: u_email, body: messageField.val()})
+    messageField.val("")
+  }
+})
+
+channel.on("new_msg", payload => {
+  // stick most recent on top
+  feedsContainer.prepend(messageTemplate(payload))
 })
 
 msgChannel.on("new_msg", payload => {
