@@ -103,13 +103,18 @@ let msgSubmit = $("#msg-submit")
   let mu_id = mm.data('user_id');
   let mu_email = mm.data('user_email');
 
+  console.log("current user's email" + mu_email);
+  console.log("current user's id" + mu_id);
+
 msgSubmit.off("keypress").on("keypress", event => {
+    console.log("submit is pressed")
     msgChannel.push("new_msg", {user: mu_email, body: msgField.val()})
     msgField.val("")
 })
 
 msgChannel.on("new_msg", payload => {
   // stick most recent on top
+  console.log("appending to the container in html")
   msgContainer.prepend(messageTemplate(payload))
 })
 
