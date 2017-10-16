@@ -129,8 +129,22 @@ msgField.off("keypress").on("keypress", event => {
 msgChannel.on("new_msg", payload => {
   // stick most recent on top
   console.log("appending to the container in html")
-  //console.log("this is preload value" + payload.val())
-  msgContainer.prepend(messageTemplate(payload))
+  let msg =
+  '<ul>' + '<li>' + '<strong>Desc:</strong>' + payload["body"] +
+  '</li>' + '<li>' + '<strong>User_id:</strong>' + mu_id + '</li>' + '</ul>'
+    // <ul>
+    //
+    //   <li>
+    //
+    //     <%= @message.desc %>
+    //   </li>
+    //   <li>
+    //
+    //     <%= @message.user_id %>
+    //   </li>
+    //
+    // </ul>
+  msgContainer.prepend(msg)
 })
 
 msgChannel.join()

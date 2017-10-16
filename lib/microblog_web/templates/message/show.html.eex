@@ -1,20 +1,21 @@
 <h2>Show Message</h2>
 
-<ul>
-
-  <li>
-    <strong>Desc:</strong>
-    <%= @message.desc %>
-  </li>
-  <li>
-    <strong>User_id:</strong>
-    <%= @message.user_id %>
-  </li>
-
-</ul>
 
 
 <div id="messages-container" class="container">
+
+  <ul>
+
+    <li>
+      <strong>Desc:</strong>
+      <%= @message.desc %>
+    </li>
+    <li>
+      <strong>User_id:</strong>
+      <%= @message.user_id %>
+    </li>
+
+  </ul>
 </div>
 
 <div id="message-likes"
