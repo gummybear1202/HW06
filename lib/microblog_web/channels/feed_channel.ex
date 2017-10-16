@@ -14,6 +14,7 @@ defmodule MicroblogWeb.FeedChannel do
   def handle_info({:join_record, payload}, socket) do
     broadcast! socket, "user:entered the chat", %{user: payload["user"]}
     push socket, "join", %{status: "connected"}
+    {:noreply, socket}
   end
 
   # Channels can be used in a request/response fashion
