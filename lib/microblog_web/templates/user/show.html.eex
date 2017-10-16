@@ -34,6 +34,7 @@
   <%= hidden_input f, :user_email %>
 
   <div id="msg-field" class="form-group">
+    data-msg_id="<%= @message.id %>"
     <%= label f, :desc, class: "control-label" %>
     <%= text_input f, :desc, class: "form-control" %>
     <%= error_tag f, :desc %>

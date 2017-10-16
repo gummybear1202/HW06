@@ -103,6 +103,9 @@ let msgSubmit = $("#msg-submit")
   let mu_id = mm.data('current_id');
   let mu_email = mm.data('current_email');
 
+  let ss_msgField = $($("msg-field")[0]);
+  let ss_id = ss_msgField.data('msg_id');
+
 // click submit button
 msgSubmit.off("click").on("click", event => {
     console.log("submit is pressed")
@@ -114,15 +117,12 @@ msgSubmit.off("click").on("click", event => {
 msgField.off("keypress").on("keypress", event => {
   if(event.keyCode === 13) {
     console.log("submit is pressed")
+    message = Blog.get_message(ss_id)
 
-    channel.push("new_msg", {user: u_email, body: messageField.val()})
-    messageField.val("")
+    // channel.push("new_msg", {user: u_email, body: messageField.val()})
+    msgChannel.push("new_msg", message)
+    //messageField.val("")
   }
-})
-
-channel.on("new_msg", payload => {
-  // stick most recent on top
-  feedsContainer.prepend(messageTemplate(payload))
 })
 
 msgChannel.on("new_msg", payload => {
