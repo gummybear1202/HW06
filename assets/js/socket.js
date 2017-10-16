@@ -99,9 +99,9 @@ let msgContainer = $("#messages-container")
 let msgField = $("#msg-field")
 let msgSubmit = $("#msg-submit")
 
-  let bb = $($("#msg-user")[0]);
-  let u_id = bb.data('user_id');
-  let u_email = bb.data('user_email');
+  let mm = $($("#msg-user")[0]);
+  let u_id = mm.data('user_id');
+  let u_email = mm.data('user_email');
 
 msgSubmit.off("keypress").on("keypress", event => {
     msgChannel.push("new_msg", {user: u_email, body: messageField.val()})
