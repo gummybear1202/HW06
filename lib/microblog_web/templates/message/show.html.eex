@@ -1,17 +1,20 @@
 <h2>Show Message</h2>
 
-<ul>
+<div id="messages-container" class="container">
 
-  <li>
-    <strong>Desc:</strong>
-    <%= @message.desc %>
-  </li>
-  <li>
-    <strong>User_id:</strong>
-    <%= @message.user_id %>
-  </li>
+  <ul>
 
-</ul>
+    <li>
+      <strong>Desc:</strong>
+      <%= @message.desc %>
+    </li>
+    <li>
+      <strong>User_id:</strong>
+      <%= @message.user_id %>
+    </li>
+
+  </ul>
+</div>
 
 <div id="message-likes"
      data-path="<%= like_path(@conn, :index) %>"

@@ -64,11 +64,6 @@ let messageField = $("#message-field")
   console.log("current user's email" + u_email);
   console.log("current user's id" + u_id);
 
-
-$( "#message-field" ).keypress(function() {
-  console.log( "Handler for .keypress() called." );
-})
-
 messageField.off("keypress").on("keypress", event => {
   if(event.keyCode === 13) {
     channel.push("new_msg", {user: u_email, body: messageField.val()})
@@ -77,7 +72,7 @@ messageField.off("keypress").on("keypress", event => {
 })
 
 channel.on("new_msg", payload => {
-  // stick most recent on top 
+  // stick most recent on top
   feedsContainer.prepend(messageTemplate(payload))
 })
 
@@ -97,5 +92,30 @@ function messageTemplate(msg){
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+// channel for updating message
+let msgChannel = socket.channel("updates:lobby", {})
+let msgContainer = $("#messages-container")
+let msgField = $("#msg-field")
+let msgSubmit = $("#msg-submit")
+
+  let bb = $($("#msg-user")[0]);
+  let u_id = bb.data('user_id');
+  let u_email = bb.data('user_email');
+
+msgSubmit.off("keypress").on("keypress", event => {
+    msgChannel.push("new_msg", {user: u_email, body: messageField.val()})
+    messageField.val("")
+})
+
+msgChannel.on("new_msg", payload => {
+  // stick most recent on top
+  msgContainer.prepend(messageTemplate(payload))
+})
+
+msgChannel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
 
 export default socket
