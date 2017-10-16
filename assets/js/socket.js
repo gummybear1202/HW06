@@ -109,6 +109,7 @@ let msgSubmit = $("#msg-submit")
 // click submit button
 msgSubmit.off("click").on("click", event => {
     console.log("submit is pressed")
+    console.log(msgField.val())
     msgChannel.push("new_msg", {user: mu_email, body: msgField.val()})
     msgField.val("")
 })
@@ -119,7 +120,7 @@ msgField.off("keypress").on("keypress", event => {
     console.log("submit is pressed")
     //message = Blog.get_message(ss_id)
 
-    channel.push("new_msg", {user: u_email, body: messageField.val()})
+    channel.push("new_msg", {user: mu_email, body: msgField.val()})
     //msgChannel.push("new_msg", message)
     messageField.val("")
   }
