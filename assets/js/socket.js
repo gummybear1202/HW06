@@ -100,8 +100,8 @@ let msgField = $("#msg-field")
 let msgSubmit = $("#msg-submit")
 
   let mm = $($("#msg-user")[0]);
-  let mu_id = mm.data('user_id');
-  let mu_email = mm.data('user_email');
+  let mu_id = mm.data('current_id');
+  let mu_email = mm.data('current_email');
 
   console.log("getting messages-container" + msgContainer);
   console.log("getting msg-field" + msgField);
