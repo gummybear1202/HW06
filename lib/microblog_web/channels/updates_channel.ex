@@ -15,7 +15,7 @@ defmodule MicroblogWeb.UpdatesChannel do
   def handle_in("new_msg", payload, socket) do
     # broadcast! socket, "new_msg", %{user: payload["user"], body: payload["body"]}
     # {:reply, {:ok, %{payload: payload["body"]}}, assign(socket, :user, payload["user"])}
-    # Logger.debug"informatin is handled in updates_channel"
+    Logger.debug"informatin is handled in updates_channel"
 
     {:noreply, socket}
   end
