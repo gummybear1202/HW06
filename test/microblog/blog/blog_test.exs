@@ -300,126 +300,126 @@ defmodule Microblog.BlogTest do
       assert %Ecto.Changeset{} = Blog.change_relation(relation)
     end
   end
-
-  describe "followings" do
-    alias Microblog.Blog.Following
-
-    @valid_attrs %{following_email: "some following_email"}
-    @update_attrs %{following_email: "some updated following_email"}
-    @invalid_attrs %{following_email: nil}
-
-    def following_fixture(attrs \\ %{}) do
-      {:ok, following} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Blog.create_following()
-
-      following
-    end
-
-    test "list_followings/0 returns all followings" do
-      following = following_fixture()
-      assert Blog.list_followings() == [following]
-    end
-
-    test "get_following!/1 returns the following with given id" do
-      following = following_fixture()
-      assert Blog.get_following!(following.id) == following
-    end
-
-    test "create_following/1 with valid data creates a following" do
-      assert {:ok, %Following{} = following} = Blog.create_following(@valid_attrs)
-      assert following.following_email == "some following_email"
-    end
-
-    test "create_following/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Blog.create_following(@invalid_attrs)
-    end
-
-    test "update_following/2 with valid data updates the following" do
-      following = following_fixture()
-      assert {:ok, following} = Blog.update_following(following, @update_attrs)
-      assert %Following{} = following
-      assert following.following_email == "some updated following_email"
-    end
-
-    test "update_following/2 with invalid data returns error changeset" do
-      following = following_fixture()
-      assert {:error, %Ecto.Changeset{}} = Blog.update_following(following, @invalid_attrs)
-      assert following == Blog.get_following!(following.id)
-    end
-
-    test "delete_following/1 deletes the following" do
-      following = following_fixture()
-      assert {:ok, %Following{}} = Blog.delete_following(following)
-      assert_raise Ecto.NoResultsError, fn -> Blog.get_following!(following.id) end
-    end
-
-    test "change_following/1 returns a following changeset" do
-      following = following_fixture()
-      assert %Ecto.Changeset{} = Blog.change_following(following)
-    end
-  end
-
-  describe "followers" do
-    alias Microblog.Blog.Follower
-
-    @valid_attrs %{follower_email: "some follower_email"}
-    @update_attrs %{follower_email: "some updated follower_email"}
-    @invalid_attrs %{follower_email: nil}
-
-    def follower_fixture(attrs \\ %{}) do
-      {:ok, follower} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Blog.create_follower()
-
-      follower
-    end
-
-    test "list_followers/0 returns all followers" do
-      follower = follower_fixture()
-      assert Blog.list_followers() == [follower]
-    end
-
-    test "get_follower!/1 returns the follower with given id" do
-      follower = follower_fixture()
-      assert Blog.get_follower!(follower.id) == follower
-    end
-
-    test "create_follower/1 with valid data creates a follower" do
-      assert {:ok, %Follower{} = follower} = Blog.create_follower(@valid_attrs)
-      assert follower.follower_email == "some follower_email"
-    end
-
-    test "create_follower/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Blog.create_follower(@invalid_attrs)
-    end
-
-    test "update_follower/2 with valid data updates the follower" do
-      follower = follower_fixture()
-      assert {:ok, follower} = Blog.update_follower(follower, @update_attrs)
-      assert %Follower{} = follower
-      assert follower.follower_email == "some updated follower_email"
-    end
-
-    test "update_follower/2 with invalid data returns error changeset" do
-      follower = follower_fixture()
-      assert {:error, %Ecto.Changeset{}} = Blog.update_follower(follower, @invalid_attrs)
-      assert follower == Blog.get_follower!(follower.id)
-    end
-
-    test "delete_follower/1 deletes the follower" do
-      follower = follower_fixture()
-      assert {:ok, %Follower{}} = Blog.delete_follower(follower)
-      assert_raise Ecto.NoResultsError, fn -> Blog.get_follower!(follower.id) end
-    end
-
-    test "change_follower/1 returns a follower changeset" do
-      follower = follower_fixture()
-      assert %Ecto.Changeset{} = Blog.change_follower(follower)
-    end
-  end
+  # 
+  # describe "followings" do
+  #   alias Microblog.Blog.Following
+  #
+  #   @valid_attrs %{following_email: "some following_email"}
+  #   @update_attrs %{following_email: "some updated following_email"}
+  #   @invalid_attrs %{following_email: nil}
+  #
+  #   def following_fixture(attrs \\ %{}) do
+  #     {:ok, following} =
+  #       attrs
+  #       |> Enum.into(@valid_attrs)
+  #       |> Blog.create_following()
+  #
+  #     following
+  #   end
+  #
+  #   test "list_followings/0 returns all followings" do
+  #     following = following_fixture()
+  #     assert Blog.list_followings() == [following]
+  #   end
+  #
+  #   test "get_following!/1 returns the following with given id" do
+  #     following = following_fixture()
+  #     assert Blog.get_following!(following.id) == following
+  #   end
+  #
+  #   test "create_following/1 with valid data creates a following" do
+  #     assert {:ok, %Following{} = following} = Blog.create_following(@valid_attrs)
+  #     assert following.following_email == "some following_email"
+  #   end
+  #
+  #   test "create_following/1 with invalid data returns error changeset" do
+  #     assert {:error, %Ecto.Changeset{}} = Blog.create_following(@invalid_attrs)
+  #   end
+  #
+  #   test "update_following/2 with valid data updates the following" do
+  #     following = following_fixture()
+  #     assert {:ok, following} = Blog.update_following(following, @update_attrs)
+  #     assert %Following{} = following
+  #     assert following.following_email == "some updated following_email"
+  #   end
+  #
+  #   test "update_following/2 with invalid data returns error changeset" do
+  #     following = following_fixture()
+  #     assert {:error, %Ecto.Changeset{}} = Blog.update_following(following, @invalid_attrs)
+  #     assert following == Blog.get_following!(following.id)
+  #   end
+  #
+  #   test "delete_following/1 deletes the following" do
+  #     following = following_fixture()
+  #     assert {:ok, %Following{}} = Blog.delete_following(following)
+  #     assert_raise Ecto.NoResultsError, fn -> Blog.get_following!(following.id) end
+  #   end
+  #
+  #   test "change_following/1 returns a following changeset" do
+  #     following = following_fixture()
+  #     assert %Ecto.Changeset{} = Blog.change_following(following)
+  #   end
+  # end
+  #
+  # describe "followers" do
+  #   alias Microblog.Blog.Follower
+  #
+  #   @valid_attrs %{follower_email: "some follower_email"}
+  #   @update_attrs %{follower_email: "some updated follower_email"}
+  #   @invalid_attrs %{follower_email: nil}
+  #
+  #   def follower_fixture(attrs \\ %{}) do
+  #     {:ok, follower} =
+  #       attrs
+  #       |> Enum.into(@valid_attrs)
+  #       |> Blog.create_follower()
+  #
+  #     follower
+  #   end
+  #
+  #   test "list_followers/0 returns all followers" do
+  #     follower = follower_fixture()
+  #     assert Blog.list_followers() == [follower]
+  #   end
+  #
+  #   test "get_follower!/1 returns the follower with given id" do
+  #     follower = follower_fixture()
+  #     assert Blog.get_follower!(follower.id) == follower
+  #   end
+  #
+  #   test "create_follower/1 with valid data creates a follower" do
+  #     assert {:ok, %Follower{} = follower} = Blog.create_follower(@valid_attrs)
+  #     assert follower.follower_email == "some follower_email"
+  #   end
+  #
+  #   test "create_follower/1 with invalid data returns error changeset" do
+  #     assert {:error, %Ecto.Changeset{}} = Blog.create_follower(@invalid_attrs)
+  #   end
+  #
+  #   test "update_follower/2 with valid data updates the follower" do
+  #     follower = follower_fixture()
+  #     assert {:ok, follower} = Blog.update_follower(follower, @update_attrs)
+  #     assert %Follower{} = follower
+  #     assert follower.follower_email == "some updated follower_email"
+  #   end
+  #
+  #   test "update_follower/2 with invalid data returns error changeset" do
+  #     follower = follower_fixture()
+  #     assert {:error, %Ecto.Changeset{}} = Blog.update_follower(follower, @invalid_attrs)
+  #     assert follower == Blog.get_follower!(follower.id)
+  #   end
+  #
+  #   test "delete_follower/1 deletes the follower" do
+  #     follower = follower_fixture()
+  #     assert {:ok, %Follower{}} = Blog.delete_follower(follower)
+  #     assert_raise Ecto.NoResultsError, fn -> Blog.get_follower!(follower.id) end
+  #   end
+  #
+  #   test "change_follower/1 returns a follower changeset" do
+  #     follower = follower_fixture()
+  #     assert %Ecto.Changeset{} = Blog.change_follower(follower)
+  #   end
+  # end
 
   describe "follows" do
     alias Microblog.Blog.Follow
