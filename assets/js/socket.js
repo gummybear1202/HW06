@@ -129,6 +129,7 @@ msgField.off("keypress").on("keypress", event => {
 msgChannel.on("new_msg", payload => {
   // stick most recent on top
   console.log("appending to the container in html")
+  console.log(payload.val())
   msgContainer.prepend(messageTemplate(payload))
 })
 
