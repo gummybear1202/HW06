@@ -25,23 +25,23 @@ defmodule MicroblogWeb.UserControllerTest do
       assert html_response(conn, 200) =~ "New User"
     end
   end
-
-  describe "create user" do
-    test "redirects to show when data is valid", %{conn: conn} do
-      conn = post conn, user_path(conn, :create), user: @create_attrs
-
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == user_path(conn, :show, id)
-
-      conn = get conn, user_path(conn, :show, id)
-      assert html_response(conn, 200) =~ "Show User"
-    end
-
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post conn, user_path(conn, :create), user: @invalid_attrs
-      assert html_response(conn, 200) =~ "New User"
-    end
-  end
+  #
+  # describe "create user" do
+  #   test "redirects to show when data is valid", %{conn: conn} do
+  #     conn = post conn, user_path(conn, :create), user: @create_attrs
+  #
+  #     assert %{id: id} = redirected_params(conn)
+  #     assert redirected_to(conn) == user_path(conn, :show, id)
+  #
+  #     conn = get conn, user_path(conn, :show, id)
+  #     assert html_response(conn, 200) =~ "Show User"
+  #   end
+  #
+  #   test "renders errors when data is invalid", %{conn: conn} do
+  #     conn = post conn, user_path(conn, :create), user: @invalid_attrs
+  #     assert html_response(conn, 200) =~ "New User"
+  #   end
+  # end
 
   describe "edit user" do
     setup [:create_user]
@@ -51,23 +51,23 @@ defmodule MicroblogWeb.UserControllerTest do
       assert html_response(conn, 200) =~ "Edit User"
     end
   end
-
-  describe "update user" do
-    setup [:create_user]
-
-    test "redirects when data is valid", %{conn: conn, user: user} do
-      conn = put conn, user_path(conn, :update, user), user: @update_attrs
-      assert redirected_to(conn) == user_path(conn, :show, user)
-
-      conn = get conn, user_path(conn, :show, user)
-      assert html_response(conn, 200) =~ "some updated user_email"
-    end
-
-    test "renders errors when data is invalid", %{conn: conn, user: user} do
-      conn = put conn, user_path(conn, :update, user), user: @invalid_attrs
-      assert html_response(conn, 200) =~ "Edit User"
-    end
-  end
+  #
+  # describe "update user" do
+  #   setup [:create_user]
+  #
+  #   test "redirects when data is valid", %{conn: conn, user: user} do
+  #     conn = put conn, user_path(conn, :update, user), user: @update_attrs
+  #     assert redirected_to(conn) == user_path(conn, :show, user)
+  #
+  #     conn = get conn, user_path(conn, :show, user)
+  #     assert html_response(conn, 200) =~ "some updated user_email"
+  #   end
+  #
+  #   test "renders errors when data is invalid", %{conn: conn, user: user} do
+  #     conn = put conn, user_path(conn, :update, user), user: @invalid_attrs
+  #     assert html_response(conn, 200) =~ "Edit User"
+  #   end
+  # end
 
   describe "delete user" do
     setup [:create_user]
