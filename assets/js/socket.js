@@ -120,7 +120,7 @@ msgField.off("keypress").on("keypress", event => {
     console.log("submit is pressed")
     //message = Blog.get_message(ss_id)
 
-    channel.push("new_msg", {user: mu_email, body: "msgField.val()"})
+    msgChannel.push("new_msg", {user: mu_email, body: "msgField.val()"})
     //msgChannel.push("new_msg", message)
     msgField.val("")
   }
