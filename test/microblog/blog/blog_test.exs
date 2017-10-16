@@ -293,15 +293,15 @@ defmodule Microblog.BlogTest do
     #   assert follow == Blog.get_follow!(follow.id)
     # end
 
-    test "delete_follow/1 deletes the follow" do
-      follow = follow_fixture()
-      assert {:ok, %Follow{}} = Blog.delete_follow(follow)
-      assert_raise Ecto.NoResultsError, fn -> Blog.get_follow!(follow.id) end
-    end
-
-    test "change_follow/1 returns a follow changeset" do
-      follow = follow_fixture()
-      assert %Ecto.Changeset{} = Blog.change_follow(follow)
-    end
+    # test "delete_follow/1 deletes the follow" do
+    #   follow = follow_fixture()
+    #   assert {:ok, %Follow{}} = Blog.delete_follow(follow)
+    #   assert_raise Ecto.NoResultsError, fn -> Blog.get_follow!(follow.id) end
+    # end
+    #
+    # test "change_follow/1 returns a follow changeset" do
+    #   follow = follow_fixture()
+    #   assert %Ecto.Changeset{} = Blog.change_follow(follow)
+    # end
   end
 end
