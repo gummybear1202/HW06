@@ -77,6 +77,7 @@ messageField.off("keypress").on("keypress", event => {
 })
 
 channel.on("new_msg", payload => {
+  // stick most recent on top 
   feedsContainer.prepend(messageTemplate(payload))
 })
 

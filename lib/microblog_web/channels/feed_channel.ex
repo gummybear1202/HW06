@@ -24,6 +24,7 @@ defmodule MicroblogWeb.FeedChannel do
     {:reply, {:ok, %{payload: payload["body"]}}, assign(socket, :user, payload["user"])}
   end
 
+  intercept ["new_msg"]
   def handle_out("new_msg", payload, socket) do
     # this payload["user"] is the message sender
     # if Blog.ignoring_user?(socket.assigns[:user], payload["user"]) do
