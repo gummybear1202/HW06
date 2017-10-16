@@ -60,7 +60,9 @@ let messageField = $("#message-field")
 
   let bb = $($("#message-user")[0]);
   let u_email = bb.data('current_email');
-  //console.log(u_email);
+  let u_id = bb.data('current_id');
+  console.log("current user's email" + u_email);
+  console.log("current user's id" + u_id);
 
 
 $( "#message-field" ).keypress(function() {
@@ -75,7 +77,8 @@ messageField.off("keypress").on("keypress", event => {
 })
 
 channel.on("new_msg", payload => {
-  feedsContainer.append(messageTemplate(payload))
+  // stick most recent on top 
+  feedsContainer.prepend(messageTemplate(payload))
 })
 
 // using part of the sample code from the phoenix example
