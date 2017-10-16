@@ -3,12 +3,12 @@ defmodule MicroblogWeb.FeedChannel do
 
   def join("feed:lobby", payload, socket) do
     if authorized?(payload) do
+      broadcast! socket, "user:entered", %{user: payload["user"]}
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
   end
-
   # Channels can be used in a request/response fashion
   # by sending replies to requests from the client
   def handle_in("new_msg", payload, socket) do
@@ -18,12 +18,12 @@ defmodule MicroblogWeb.FeedChannel do
 
   def handle_out("new_msg", payload, socket) do
     # this payload["user"] is the message sender
-    if Blog.ignoring_user?(socket.assigns[:user], payload["user"]) do
-      {:noreply, socket}
-    else
+    # if Blog.ignoring_user?(socket.assigns[:user], payload["user"]) do
+    #   {:noreply, socket}
+    # else
       push socket, "new_msg", payload
       {:noreply, socket}
-    end
+    # end
   end
 
   # Add authorization logic here as required.
