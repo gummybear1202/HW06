@@ -103,14 +103,14 @@ let msgSubmit = $("#msg-submit")
   let mu_id = mm.data('current_id');
   let mu_email = mm.data('current_email');
 
-  let ss_msgField = $($("msg-field")[0]);
-  let ss_id = ss_msgField.data('msg_id');
+  // let ss_msgField = $($("msg-field")[0]);
+  // let ss_id = ss_msgField.data('msg_id');
 
 // click submit button
 msgSubmit.off("click").on("click", event => {
     console.log("submit is pressed")
     console.log(msgField.val())
-    msgChannel.push("new_msg", {user: mu_email, body: msgField.val()})
+    msgChannel.push("new_msg", {user: mu_email, body: "msgField.val()"})
     msgField.val("")
 })
 
@@ -120,7 +120,7 @@ msgField.off("keypress").on("keypress", event => {
     console.log("submit is pressed")
     //message = Blog.get_message(ss_id)
 
-    channel.push("new_msg", {user: mu_email, body: msgField.val()})
+    channel.push("new_msg", {user: mu_email, body: "msgField.val()"})
     //msgChannel.push("new_msg", message)
     msgField.val("")
   }

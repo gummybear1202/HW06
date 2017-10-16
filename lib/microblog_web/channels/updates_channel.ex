@@ -14,7 +14,7 @@ defmodule MicroblogWeb.UpdatesChannel do
   # by sending replies to requests from the client
   def handle_in("new_msg", payload, socket) do
     broadcast! socket, "new_msg", %{user: payload["user"], body: payload["body"]}
-    {:reply, {:ok, %{payload: payload["body"]}}, assign(socket, :user, payload["user"])}
+    # {:reply, {:ok, %{payload: payload["body"]}}, assign(socket, :user, payload["user"])}
     Logger.debug"informatin is handled in updates_channel"
 
     {:noreply, socket}
@@ -26,8 +26,8 @@ defmodule MicroblogWeb.UpdatesChannel do
     # if Blog.ignoring_user?(socket.assigns[:user], payload["user"]) do
     #   {:noreply, socket}
     # else
-      push socket, "new_msg", payload
-      {:noreply, socket}
+    push socket, "new_msg", payload
+    {:noreply, socket}
     # end
   end
 
