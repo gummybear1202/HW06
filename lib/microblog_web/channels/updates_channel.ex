@@ -1,5 +1,6 @@
 defmodule MicroblogWeb.UpdatesChannel do
   use MicroblogWeb, :channel
+  require Logger
 
   def join("updates:lobby", payload, socket) do
     if authorized?(payload) do
@@ -14,7 +15,7 @@ defmodule MicroblogWeb.UpdatesChannel do
   def handle_in("new_msg", payload, socket) do
     broadcast! socket, "new_msg", %{user: payload["user"], body: payload["body"]}
     {:reply, {:ok, %{payload: payload["body"]}}, assign(socket, :user, payload["user"])}
-    console.log("informatin is handled in updates_channel")
+    Logger.debug"informatin is handled in updates_channel"
   end
 
   intercept ["new_msg"]
