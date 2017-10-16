@@ -122,14 +122,14 @@ msgField.off("keypress").on("keypress", event => {
 
     channel.push("new_msg", {user: mu_email, body: msgField.val()})
     //msgChannel.push("new_msg", message)
-    messageField.val("")
+    msgField.val("")
   }
 })
 
 msgChannel.on("new_msg", payload => {
   // stick most recent on top
   console.log("appending to the container in html")
-  console.log(payload.val())
+  console.log("this is preload value" + payload.val())
   msgContainer.prepend(messageTemplate(payload))
 })
 
