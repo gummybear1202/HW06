@@ -3,7 +3,7 @@ defmodule MicroblogWeb.FeedChannel do
 
   def join("feed:lobby", payload, socket) do
     if authorized?(payload) do
-      sned(self, {:join_record, payload})
+      send(self, {:join_record, payload})
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
