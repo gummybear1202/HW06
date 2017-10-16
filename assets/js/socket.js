@@ -60,7 +60,9 @@ let messageField = $("#message-field")
 
   let bb = $($("#message-user")[0]);
   let u_email = bb.data('current_email');
-  //console.log(u_email);
+  let u_id = bb.data('current_id');
+  console.log("current user's email" + u_email);
+  console.log("current user's id" + u_id);
 
 
 $( "#message-field" ).keypress(function() {

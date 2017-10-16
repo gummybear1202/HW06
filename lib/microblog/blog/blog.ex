@@ -36,7 +36,7 @@ defmodule Microblog.Blog do
 
   """
   def get_message!(id), do: Repo.get!(Message, id)
-  
+
   def get_user_by_email!(email) do
     Repo.get_by(User, user_email: email)
   end
@@ -297,7 +297,7 @@ defmodule Microblog.Blog do
   def change_relation(%Relation{} = relation) do
     Relation.changeset(relation, %{})
   end
- 
+
   alias Microblog.Blog.Follow
 
   @doc """
@@ -313,6 +313,23 @@ defmodule Microblog.Blog do
     Repo.all(Follow)
   end
 
+# if the given user should be ignored (not followed by current user), return true
+  def ignoring_user?(guser) do
+    if @current_user do
+      # get the list of follows that have the current as the follower
+      follows_by_current = Repo.all(from f in Follow, where f.follower_user_id ==^@current_user.id)
+      # count the number in the list where the given user is followed BY current user
+      count_follow = Repo.all(from f in follows_by_current, where: f.following_user_id == ^guser.id,
+          select: count(f.user_id))
+      if count_follow == 0 do
+        false
+      else
+        true
+      end
+    end
+
+    |> Repo.preload(:user)
+  end
   @doc """
   Gets a single follow.
 

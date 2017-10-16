@@ -17,8 +17,13 @@ defmodule MicroblogWeb.FeedChannel do
   end
 
   def handle_out("new_msg", payload, socket) do
-    push socket, "new_msg", payload
-    {:noreply, socket}
+    # this payload["user"] is the message sender
+    if Blog.ignoring_user?(socket.assigns[:user], payload["user"]) do
+      {:noreply, socket}
+    else
+      push socket, "new_msg", payload
+      {:noreply, socket}
+    end
   end
 
   # Add authorization logic here as required.
