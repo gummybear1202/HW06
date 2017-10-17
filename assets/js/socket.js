@@ -97,6 +97,7 @@ channel.join()
 let msgChannel = socket.channel("updates:lobby", {})
 let msgContainer = $("#messages-index-container tbody")
 let msgInput = $("#message_desc")
+let msgUser = $("#message_user.id")
 let msgField = $("#msg-field")
 let msgSubmit = $("#msg-submit")
 
@@ -124,7 +125,7 @@ msgField.off("keypress").on("keypress", event => {
 function triggerPush(user_id){
 
     console.log("pushing by press key or click")
-    msgChannel.push("new_msg", {user: user_id, body: msgInput.val()})
+    msgChannel.push("new_msg", {user: msgUser.val(), body: msgInput.val()})
     msgField.val("")
 }
 
