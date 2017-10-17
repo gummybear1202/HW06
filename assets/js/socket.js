@@ -133,7 +133,7 @@ msgChannel.on("new_msg", payload => {
   console.log("appending to the container in html")
   let msg =
   '<tr>' +
-  '<td>' + payload["body"] + '</td>'
+  '<td>' + payload["body"] + '</td>' +
   '<td>' + payload["user"] + '</td>' +
   '</tr>';
   console.log("msg " + msg)
