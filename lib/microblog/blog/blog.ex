@@ -18,7 +18,7 @@ defmodule Microblog.Blog do
 
   """
   def list_messages do
-    Repo.all(Message)
+    Enum.reverse(Repo.all(Message))
   end
 
   @doc """
