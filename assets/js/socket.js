@@ -111,20 +111,20 @@ let msgSubmit = $("#msg-submit")
 
 // click submit button
 msgSubmit.off("click").on("click").off("keypress").on("keypress", event => {
-  triggerPush()
+  triggerPush(mu_id)
 })
 
 // press enter
 msgField.off("keypress").on("keypress", event => {
   if(event.keyCode === 13) {
-    triggerPush()
+    triggerPush(mu_id)
   }
 })
 
-function triggerPush(){
+function triggerPush(user_id){
 
     console.log("pushing by press key or click")
-    msgChannel.push("new_msg", {user: mu_id, body: msgInput.val()})
+    msgChannel.push("new_msg", {user: user_id, body: msgInput.val()})
     msgField.val("")
 }
 
