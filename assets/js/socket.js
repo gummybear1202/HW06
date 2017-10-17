@@ -95,7 +95,7 @@ channel.join()
 
 // channel for updating message
 let msgChannel = socket.channel("updates:lobby", {})
-let msgContainer = $("#messages-index-container tr:first")
+let msgContainer = $("#messages-index-container tbody")
 let msgInput = $("#message_desc")
 let msgField = $("#msg-field")
 let msgSubmit = $("#msg-submit")
@@ -133,7 +133,7 @@ msgChannel.on("new_msg", payload => {
   '<td>' + payload["body"] + '</td>'
   '<td>' + payload["user"] + '</td>';
   console.log("msg " + msg)
-  msgContainer.after($(msg))
+  msgContainer.prepend($(msg))
 })
 
 msgChannel.join()
