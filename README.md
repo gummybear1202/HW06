@@ -1,8 +1,10 @@
-# HW04 REQS
-Github repo: https://github.com/gummybear1202/CS4550_Microblog_Dev.git
-deployed app: http://microblog.rosaline.im
 
 # credits
+design of live-feeds referenced the phoenix documentation:
+https://hexdocs.pm/phoenix/channels.html
+which contains a walk through of a sample:
+https://github.com/chrismccord/phoenix_chat_example
+
 setting up the deployment referenced this question to give permission to running the shell file:
 https://askubuntu.com/questions/38661/how-do-i-run-sh-files
 
