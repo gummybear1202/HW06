@@ -104,6 +104,7 @@ let msgSubmit = $("#msg-submit")
   let mu_id = mm.data('current_id');
   let mu_email = mm.data('current_email');
   console.log("mu id" + mu_id);
+  console.log("mu email" + mu_email);
 
   // let ss_msgField = $($("msg-field")[0]);
   // let ss_id = ss_msgField.data('msg_id');
