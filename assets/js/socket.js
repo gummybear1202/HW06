@@ -133,7 +133,7 @@ msgChannel.on("new_msg", payload => {
   '<ul>' + '<li>' + '<strong>Desc:</strong>' + payload["body"] +
   '</li>' + '<li>' + '<strong>User_id:</strong>' + mu_id + '</li>' + '</ul>';
   console.log("msg " + msg)
-  msgContainer.prepend(msg)
+  msgContainer.prepend($(msg))
 })
 
 msgChannel.join()
