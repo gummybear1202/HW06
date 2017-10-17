@@ -37,7 +37,9 @@
     <!-- <%= label f, :desc, class: "control-label" %>
     <%= text_input f, :desc, class: "form-control" %>
     <%= error_tag f, :desc %> -->
-    <%= @message.desc %>
+    <p>
+      <%= @message.desc, class: "form-control" %>
+    </p>
   </div>
 
   <div id="msg-submit" class="form-group">
