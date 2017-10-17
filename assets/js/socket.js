@@ -95,7 +95,7 @@ channel.join()
 
 // channel for updating message
 let msgChannel = socket.channel("updates:lobby", {})
-let msgContainer = $("#messages-container")
+let msgContainer = $("#messages-index-container")
 let msgField = $("#msg-field")
 let msgSubmit = $("#msg-submit")
 
@@ -131,7 +131,7 @@ msgChannel.on("new_msg", payload => {
   console.log("appending to the container in html")
   let msg =
   '<ul>' + '<li>' + '<strong>Desc:</strong>' + payload["body"] +
-  '</li>' + '<li>' + '<strong>User_id:</strong>' + mu_id + '</li>' + '</ul>';
+  '</li>' + '<li>' + '<strong>User_id:</strong>' + payload["user"] + '</li>' + '</ul>';
   console.log("msg " + msg)
   msgContainer.prepend($(msg))
 })

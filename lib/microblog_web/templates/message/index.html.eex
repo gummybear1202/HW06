@@ -1,5 +1,6 @@
 <h2>Listing Messages</h2>
 
+<div id="messages-index-container" class="container">
 <table class="table">
   <thead>
     <tr>
@@ -22,6 +23,6 @@
 <% end %>
   </tbody>
 </table>
+</div>
 
 <span><%= link "New Message", to: message_path(@conn, :new) %></span>
-
