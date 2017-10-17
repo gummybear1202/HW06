@@ -103,6 +103,7 @@ let msgSubmit = $("#msg-submit")
   let mm = $($("#msg-user")[0]);
   let mu_id = mm.data('current_id');
   let mu_email = mm.data('current_email');
+  console.log("mu id" + mu_id);
 
   // let ss_msgField = $($("msg-field")[0]);
   // let ss_id = ss_msgField.data('msg_id');
@@ -130,8 +131,10 @@ msgChannel.on("new_msg", payload => {
   // stick most recent on top
   console.log("appending to the container in html")
   let msg =
+  '<tr>' +
   '<td>' + payload["body"] + '</td>'
-  '<td>' + payload["user"] + '</td>';
+  '<td>' + payload["user"] + '</td>' +
+  '</tr>';
   console.log("msg " + msg)
   msgContainer.prepend($(msg))
 })
