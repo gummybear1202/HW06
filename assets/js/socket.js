@@ -110,7 +110,7 @@ let msgSubmit = $("#msg-submit")
 msgSubmit.off("click").on("click", event => {
     console.log("submit is pressed")
     console.log(msgField.val())
-    msgChannel.push("new_msg", {user: mu_email, body: "msgField.val()"})
+    msgChannel.push("new_msg", {user: mu_id, body: "msgField.val()"})
     msgField.val("")
 })
 
@@ -120,7 +120,7 @@ msgField.off("keypress").on("keypress", event => {
     console.log("submit is pressed")
     //message = Blog.get_message(ss_id)
 
-    msgChannel.push("new_msg", {user: mu_email, body: "msgField.val()"})
+    msgChannel.push("new_msg", {user: mu_id, body: "msgField.val()"})
     //msgChannel.push("new_msg", message)
     msgField.val("")
   }
@@ -130,8 +130,8 @@ msgChannel.on("new_msg", payload => {
   // stick most recent on top
   console.log("appending to the container in html")
   let msg =
-  '<ul>' + '<li>' + '<strong>Desc:</strong>' + payload["body"] +
-  '</li>' + '<li>' + '<strong>User_id:</strong>' + payload["user"] + '</li>' + '</ul>';
+  '<td>' + payload["body"] + '</td>'
+  '<td>' + payload["user"] + '</td>';
   console.log("msg " + msg)
   msgContainer.prepend($(msg))
 })
