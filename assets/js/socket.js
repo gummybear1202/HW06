@@ -122,7 +122,7 @@ msgField.off("keypress").on("keypress", event => {
 function triggerPush(){
 
     console.log("pushing by press key or click")
-    msgChannel.push("new_msg", {user: mu_id, body: msgInput})
+    msgChannel.push("new_msg", {user: mu_id, body: msgInput.val()})
     msgField.val("")
 }
 
