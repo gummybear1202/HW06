@@ -136,17 +136,17 @@ msgChannel.on("new_msg", payload => {
   '<tr>' +
   '<td>' + payload["body"] + '</td>' +
   '<td>' + payload["user"] + '</td>' +
-  '<td class="text-right">' +
-    '<span>' +
-    '<%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %>' +
-    '</span>' +
-    '<span>' +
-    '<%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %>' +
-    '</span>' +
-    '<span>' +
-    '<%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>' +
-    '</span>' +
-  '</td>' + 
+  // '<td class="text-right">' +
+  //   '<span>' +
+  //   '<%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %>' +
+  //   '</span>' +
+  //   '<span>' +
+  //   '<%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %>' +
+  //   '</span>' +
+  //   '<span>' +
+  //   '<%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>' +
+  //   '</span>' +
+  // '</td>' +
   '</tr>';
   console.log("msg " + msg)
   msgContainer.prepend($(msg))
