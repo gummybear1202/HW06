@@ -107,24 +107,23 @@ let msgSubmit = $("#msg-submit")
   // let ss_id = ss_msgField.data('msg_id');
 
 // click submit button
-msgSubmit.off("click").on("click", event => {
-    console.log("submit is pressed")
-    console.log(msgField.val())
-    msgChannel.push("new_msg", {user: mu_id, body: "msgField.val()"})
-    msgField.val("")
+msgSubmit.off("click").on("click").off("keypress").on("keypress", event => {
+  triggerPush()
 })
 
 // press enter
 msgField.off("keypress").on("keypress", event => {
   if(event.keyCode === 13) {
-    console.log("submit is pressed")
-    //message = Blog.get_message(ss_id)
-
-    msgChannel.push("new_msg", {user: mu_id, body: "msgField.val()"})
-    //msgChannel.push("new_msg", message)
-    msgField.val("")
+    triggerPush()
   }
 })
+
+function triggerPush(){
+
+    console.log("pushing by press key or click")
+    msgChannel.push("new_msg", {user: mu_id, body: msgField})
+    msgField.val("")
+}
 
 msgChannel.on("new_msg", payload => {
   // stick most recent on top
