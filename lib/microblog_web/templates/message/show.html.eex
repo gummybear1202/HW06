@@ -1,5 +1,6 @@
 <h2>Show Message</h2>
 
+
 <ul>
 
   <li>
@@ -14,9 +15,9 @@
 </ul>
 
 <div id="message-likes"
-     data-path="<%= like_path(@conn, :index) %>"
-     data-message_id="<%= @message.id %>">
-  &nbsp;
+data-path="<%= like_path(@conn, :index) %>"
+data-message_id="<%= @message.id %>">
+&nbsp;
 </div>
 
 <script id="likes-template" type="text/x-handlebars-template">
@@ -28,7 +29,7 @@
       <div class="card-body">
         <h6 class=""></h6>
         <div class="card-text">
-           <p>{{user_email}} liked this post</p>
+          <p>{{user_email}} liked this post</p>
         </div>
       </div>
     </div>
@@ -40,11 +41,11 @@
 <div class="m-2">
   <h2>Add Like</h2>
   <button id="like-add-button" class="btn btn-primary"
-          data-user_id="<%= @current_user.id %>"
-          data-user_email="<%= @current_user.user_email %>">Like</button>
+  data-user_id="<%= @current_user.id %>"
+  data-user_email="<%= @current_user.user_email %>">Like</button>
   <button id="like-delete-button" class="btn btn-warning"
-          data-user_id="<%= @current_user.id %>"
-          data-user_email="<%= @current_user.user_email %>">Unlike</button>
+  data-user_id="<%= @current_user.id %>"
+  data-user_email="<%= @current_user.user_email %>">Unlike</button>
 </div>
 <% end %>
 

@@ -26901,6 +26901,46 @@ socket.connect();
 
 // Now that you are connected, you can join channels with a topic:
 var channel = socket.channel("feed:lobby", {});
+var feedsContainer = $("#feeds");
+var messageField = $("#message-field");
+
+var bb = $($("#message-user")[0]);
+var u_email = bb.data('current_email');
+var u_id = bb.data('current_id');
+console.log("current user's email" + u_email);
+console.log("current user's id" + u_id);
+
+$("#message-field").keypress(function () {
+  console.log("Handler for .keypress() called.");
+});
+
+messageField.off("keypress").on("keypress", function (event) {
+  if (event.keyCode === 13) {
+    channel.push("new_msg", { user: u_email, body: messageField.val() });
+    messageField.val("");
+  }
+});
+
+channel.on("new_msg", function (payload) {
+  // stick most recent on top 
+  feedsContainer.prepend(messageTemplate(payload));
+});
+
+// using part of the sample code from the phoenix example
+function sanitize(html) {
+  return $("<div/>").text(html).html();
+}
+
+function messageTemplate(msg) {
+  var username = sanitize(msg.user || "anonymous");
+  var body = sanitize(msg.body);
+
+  return "<p><a href='#'>[" + username + "]</a>&nbsp; " + body + "</p>";
+}
+
+// end using the code
+
+
 channel.join().receive("ok", function (resp) {
   console.log("Joined successfully", resp);
 }).receive("error", function (resp) {

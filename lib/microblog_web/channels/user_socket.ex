@@ -3,6 +3,7 @@ defmodule MicroblogWeb.UserSocket do
 
   ## Channels
   channel "feed:*", MicroblogWeb.FeedChannel
+  channel "updates:*", MicroblogWeb.UpdatesChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
