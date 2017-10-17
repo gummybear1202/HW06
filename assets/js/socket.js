@@ -131,19 +131,8 @@ msgChannel.on("new_msg", payload => {
   console.log("appending to the container in html")
   let msg =
   '<ul>' + '<li>' + '<strong>Desc:</strong>' + payload["body"] +
-  '</li>' + '<li>' + '<strong>User_id:</strong>' + mu_id + '</li>' + '</ul>'
-    // <ul>
-    //
-    //   <li>
-    //
-    //     <%= @message.desc %>
-    //   </li>
-    //   <li>
-    //
-    //     <%= @message.user_id %>
-    //   </li>
-    //
-    // </ul>
+  '</li>' + '<li>' + '<strong>User_id:</strong>' + mu_id + '</li>' + '</ul>';
+  console.log("msg " + msg)
   msgContainer.prepend(msg)
 })
 
