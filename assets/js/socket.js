@@ -96,7 +96,7 @@ channel.join()
 // channel for updating message
 let msgChannel = socket.channel("updates:lobby", {})
 let msgContainer = $("#messages-index-container")
-let msgInput = "<%= text_input %>"
+let msgInput = $("#message_desc")
 let msgField = $("#msg-field")
 let msgSubmit = $("#msg-submit")
 
