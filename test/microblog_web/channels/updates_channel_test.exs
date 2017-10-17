@@ -17,8 +17,8 @@ defmodule MicroblogWeb.UpdatesChannelTest do
   # end
 
   test "shout broadcasts to updates:lobby", %{socket: socket} do
-    push socket, "new_msg", %{"hello" => "all"}
-    assert_broadcast "new_msg", %{"hello" => "all"}
+    push socket, "new_msg", %{body: "all", user: "me"}
+    assert_broadcast "new_msg", %{body: "all", user: "me"}
   end
 
   test "broadcasts are pushed to the client", %{socket: socket} do
