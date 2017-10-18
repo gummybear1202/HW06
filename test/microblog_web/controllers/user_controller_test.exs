@@ -43,14 +43,14 @@ defmodule MicroblogWeb.UserControllerTest do
   #   end
   # end
 
-  describe "edit user" do
-    setup [:create_user]
-
-    test "renders form for editing chosen user", %{conn: conn, user: user} do
-      conn = get conn, user_path(conn, :edit, user)
-      assert html_response(conn, 200) =~ "Edit User"
-    end
-  end
+  # describe "edit user" do
+  #   setup [:create_user]
+  #
+  #   test "renders form for editing chosen user", %{conn: conn, user: user} do
+  #     conn = get conn, user_path(conn, :edit, user)
+  #     assert html_response(conn, 200) =~ "Edit User"
+  #   end
+  # end
   #
   # describe "update user" do
   #   setup [:create_user]
@@ -68,18 +68,18 @@ defmodule MicroblogWeb.UserControllerTest do
   #     assert html_response(conn, 200) =~ "Edit User"
   #   end
   # end
-
-  describe "delete user" do
-    setup [:create_user]
-
-    test "deletes chosen user", %{conn: conn, user: user} do
-      conn = delete conn, user_path(conn, :delete, user)
-      assert redirected_to(conn) == user_path(conn, :index)
-      assert_error_sent 404, fn ->
-        get conn, user_path(conn, :show, user)
-      end
-    end
-  end
+  #
+  # describe "delete user" do
+  #   setup [:create_user]
+  #
+  #   test "deletes chosen user", %{conn: conn, user: user} do
+  #     conn = delete conn, user_path(conn, :delete, user)
+  #     assert redirected_to(conn) == user_path(conn, :index)
+  #     assert_error_sent 404, fn ->
+  #       get conn, user_path(conn, :show, user)
+  #     end
+  #   end
+  # end
 
   defp create_user(_) do
     user = fixture(:user)
