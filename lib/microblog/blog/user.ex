@@ -1,6 +1,7 @@
 defmodule Microblog.Blog.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Microblog.Blog
   alias Microblog.Blog.User
   alias Microblog.Blog.Message
   alias Microblog.Blog.Follow
