@@ -26910,10 +26910,6 @@ var u_id = bb.data('current_id');
 console.log("current user's email" + u_email);
 console.log("current user's id" + u_id);
 
-$("#message-field").keypress(function () {
-  console.log("Handler for .keypress() called.");
-});
-
 messageField.off("keypress").on("keypress", function (event) {
   if (event.keyCode === 13) {
     channel.push("new_msg", { user: u_email, body: messageField.val() });
@@ -26922,7 +26918,7 @@ messageField.off("keypress").on("keypress", function (event) {
 });
 
 channel.on("new_msg", function (payload) {
-  // stick most recent on top 
+  // stick most recent on top
   feedsContainer.prepend(messageTemplate(payload));
 });
 
@@ -26942,6 +26938,68 @@ function messageTemplate(msg) {
 
 
 channel.join().receive("ok", function (resp) {
+  console.log("Joined successfully", resp);
+}).receive("error", function (resp) {
+  console.log("Unable to join", resp);
+});
+
+// channel for updating message
+var msgChannel = socket.channel("updates:lobby", {});
+var msgContainer = $("#messages-index-container tbody");
+var msgInput = $("#message_desc");
+var msgUser = $("#message_user.id");
+var msgField = $("#msg-field");
+var msgSubmit = $("#msg-submit");
+
+var mm = $($("#msg-user")[0]);
+var mu_id = mm.data('current_id');
+var mu_email = mm.data('current_email');
+console.log("mu id" + mu_id);
+console.log("mu email" + mu_email);
+
+// let ss_msgField = $($("msg-field")[0]);
+// let ss_id = ss_msgField.data('msg_id');
+
+// click submit button
+msgSubmit.off("click").on("click").off("keypress").on("keypress", function (event) {
+  triggerPush(mu_id);
+});
+
+// press enter
+msgField.off("keypress").on("keypress", function (event) {
+  if (event.keyCode === 13) {
+    triggerPush(mu_id);
+  }
+});
+
+function triggerPush(user_id) {
+
+  console.log("pushing by press key or click");
+  msgChannel.push("new_msg", { user: mu_id, body: msgInput.val() });
+  msgField.val("");
+}
+
+msgChannel.on("new_msg", function (payload) {
+  // stick most recent on top
+  console.log("appending to the container in html");
+  var msg = '<tr>' + '<td>' + payload["body"] + '</td>' + '<td>' + payload["user"] + '</td>' +
+  // '<td class="text-right">' +
+  //   '<span>' +
+  //   '<%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %>' +
+  //   '</span>' +
+  //   '<span>' +
+  //   '<%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %>' +
+  //   '</span>' +
+  //   '<span>' +
+  //   '<%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>' +
+  //   '</span>' +
+  // '</td>' +
+  '</tr>';
+  console.log("msg " + msg);
+  msgContainer.prepend($(msg));
+});
+
+msgChannel.join().receive("ok", function (resp) {
   console.log("Joined successfully", resp);
 }).receive("error", function (resp) {
   console.log("Unable to join", resp);
