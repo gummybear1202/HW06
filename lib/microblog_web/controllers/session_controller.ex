@@ -6,7 +6,7 @@ defmodule MicroblogWeb.SessionController do
 
   # TODO: Move to user.ex
   def get_and_auth_user(email, password) do
-    user = Blog.get_user_by_email(email)
+    user = Blog.get_user_by_email!(email)
     case Comeonin.Argon2.check_pass(user, password) do
       {:ok, user} -> user
       _else       -> nil
