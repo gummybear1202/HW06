@@ -51,4 +51,11 @@ defmodule Microblog.Blog.User do
     {:ok, password}
   end
   def valid_password?(_), do: {:error, "The password is too short"}
+  def get_and_auth_user(email, password) do
+    user = Blog.get_user_by_email!(email)
+    case Comeonin.Argon2.check_pass(user, password) do
+      {:ok, user} -> user
+      _else       -> nil
+    end
+  end
 end

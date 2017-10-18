@@ -3,20 +3,9 @@ defmodule MicroblogWeb.SessionController do
 
   alias Microblog.Blog
 
-
-  # TODO: Move to user.ex
-  def get_and_auth_user(email, password) do
-    user = Blog.get_user_by_email!(email)
-    case Comeonin.Argon2.check_pass(user, password) do
-      {:ok, user} -> user
-      _else       -> nil
-    end
-  end
-
-
   def login(conn, %{"email" => email, "password" => password}) do
     # require IEx; Iex.pry
-    user = get_and_auth_user(email, password)
+    user = Blog.User.get_and_auth_user(email, password)
 
     if user do
       conn
