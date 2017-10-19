@@ -1,7 +1,7 @@
 defmodule MicroblogWeb.WelcomeController do
   use MicroblogWeb, :controller
 
-  def show(conn) do
+  def show(conn, %{"welcome" => welcome }) do
     render conn, "show.html"
   end
 end
