@@ -22,7 +22,7 @@ defmodule MicroblogWeb.Router do
       conn
     end
   end
-  
+
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_session
@@ -43,6 +43,7 @@ defmodule MicroblogWeb.Router do
 
     get "/", PageController, :index
     get "/:ftag", FeedController, :show
+    get "/welcome", WelcomeController, :show
   end
 
   # Other scopes may use custom stacks.
