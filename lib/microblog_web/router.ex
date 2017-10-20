@@ -44,6 +44,7 @@ defmodule MicroblogWeb.Router do
     get "/", PageController, :index
     get "/feed", FeedController, :show
     get "/welcome", WelcomeController, :show
+    get "/dashboard", DashboardController, :show
   end
 
   # Other scopes may use custom stacks.
