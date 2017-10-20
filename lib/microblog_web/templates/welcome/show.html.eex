@@ -2,6 +2,6 @@
   <p>
     Welcome to Microblog!
   </p>
-  <span><%= link "Create Me", to: user_path(@conn, :create) %></span>
+  <span><%= link "Create Me", to: user_path(@conn, :new) %></span>
 
 </div>
