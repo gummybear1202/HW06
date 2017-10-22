@@ -1,6 +1,7 @@
 <!-- dashboard panel, with all messages  -->
 <div class="container-fluid">
   <div class="row">
+    <%= if @current_user do %>
 
     <div class="col-md-4">
 
@@ -40,6 +41,8 @@
 
     </div>
 
+    <% end %>
+    
     <div class="col-md-8 ml-auto">
 
       <h2>Listing Messages</h2>
