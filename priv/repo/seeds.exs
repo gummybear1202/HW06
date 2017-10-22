@@ -13,7 +13,12 @@
 alias Microblog.Repo
 alias Microblog.Blog.User
 alias Microblog.Blog.Message
+alias Microblog.Blog.Like
+alias Microblog.Blog.Follow
 
+Repo.delete_all(Like)
+Repo.delete_all(Follow)
+Repo.delete_all(Message)
 Repo.delete_all(User)
 
 Repo.insert!(%User{user_email: "rosaline@gmail.com", authorized?: false})
