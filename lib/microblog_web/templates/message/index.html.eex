@@ -1,37 +1,5 @@
 <!-- dashboard panel, with all messages  -->
 
-<div class="col-md-8 ml-auto">
-
-  <h2>Listing Messages</h2>
-
-  <table id="messages-index-container" class="table">
-    <thead>
-      <tr>
-        <th>Desc</th>
-
-        <th>Id</th>
-      </tr>
-    </thead>
-    <tbody>
-    <%= for message <- @messages do %>
-    <tr>
-        <td><%= message.desc %></td>
-        <td><%= message.user_id %></td>
-        <td class="text-right">
-          <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-        </td>
-    </tr>
-    <% end %>
-  </tbody>
-  </table>
-
-  <!-- <span><%= link "New Message", to: message_path(@conn, :new) %></span> -->
-
-
-</div>
-
 <div class="col-md-4">
 
   <!-- showing current user and posting new messages -->
@@ -67,5 +35,37 @@
   <%= submit "Submit", class: "btn btn-primary" %>
   </div>
   <% end %>
+
+</div>
+
+<div class="col-md-8 ml-auto">
+
+  <h2>Listing Messages</h2>
+
+  <table id="messages-index-container" class="table">
+    <thead>
+      <tr>
+        <th>Desc</th>
+
+        <th>Id</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= for message <- @messages do %>
+    <tr>
+        <td><%= message.desc %></td>
+        <td><%= message.user_id %></td>
+        <td class="text-right">
+          <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+        </td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+  <!-- <span><%= link "New Message", to: message_path(@conn, :new) %></span> -->
+
 
 </div>
