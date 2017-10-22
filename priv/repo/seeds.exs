@@ -13,7 +13,7 @@
 alias Microblog.Repo
 alias Microblog.Blog.User
 alias Microblog.Blog.Message
-alias Microblog.Blog.Like
+alias Microblog.Feedback.Like
 alias Microblog.Blog.Follow
 
 Repo.delete_all(Like)
