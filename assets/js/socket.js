@@ -111,7 +111,7 @@ let msgSubmit = $("#msg-submit")
   // let ss_id = ss_msgField.data('msg_id');
 
 // click submit button
-msgSubmit.off("click").on("click").off("keypress").on("keypress", event => {
+msgSubmit.off("click").on("click", event => {
   triggerPush(mu_id)
 })
 
