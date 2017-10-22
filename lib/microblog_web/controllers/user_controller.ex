@@ -6,12 +6,17 @@ defmodule MicroblogWeb.UserController do
 
   def index(conn, _params) do
     users = Blog.list_users()
-    # render(conn, "index.html", users: users)
 
+    current_user = conn.assigns[:current_user]
     # show index needs authorization
-    conn
-    |> redirect(to: "/")
-    |> halt()
+
+    if (current_user.authorized) do
+      render(conn, "index.html", users: users)
+    else
+      conn
+      |> redirect(to: "/")
+      |> halt()
+    end
   end
 
   def new(conn, _params) do
