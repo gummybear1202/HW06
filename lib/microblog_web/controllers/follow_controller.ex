@@ -5,8 +5,8 @@ defmodule MicroblogWeb.FollowController do
   alias Microblog.Blog.Follow
 
   def index(conn, _params) do
-    follows = Blog.list_follows()
-    render(conn, "index.html", follows: follows)
+    # follows = Blog.list_follows()
+    # render(conn, "index.html", follows: follows)
   end
 
   def new(conn, _params) do
