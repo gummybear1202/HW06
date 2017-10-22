@@ -20,8 +20,8 @@ defmodule MicroblogWeb.MessageController do
     case Blog.create_message(message_params) do
       {:ok, message} ->
         conn
-        # |> put_flash(:info, "Message created successfully.")
-        # |> redirect(to: message_path(conn, :show, message))
+        |> put_flash(:info, "Message created successfully.")
+        |> redirect(to: message_path(conn, :show, message))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
