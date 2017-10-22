@@ -3,6 +3,6 @@
 defmodule MicroblogWeb.Authorization do
   def authorized?(nil), do: false
   def authorized?(user) do
-    user.authorized?
+    user.authorized
   end
 end
