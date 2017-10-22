@@ -6,7 +6,7 @@ defmodule MicroblogWeb.FollowController do
 
   def index(conn, _params) do
     follows = Blog.list_follows()
-    redirect(conn, :to "/")
+    redirect(:to "/")
   end
 
   def new(conn, _params) do
