@@ -5,4 +5,7 @@ defmodule MicroblogWeb.Authorization do
   def authorized?(user) do
     user.authorized
   end
+  def matchUser?(user, message) do
+    user.id == message.user_id
+  end
 end
