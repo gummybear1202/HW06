@@ -65,9 +65,9 @@
             <p>
             <%= message.user_id %>
           </p>
-            <!-- <%= if matchUser?(@current_user, message) do %> -->
+            <!-- if matchUser?(@current_user, message) do -->
             <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
-            <!-- <% end %> -->
+            <!-- end -->
             <%= if authorized?(@current_user) do %>
             <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
             <% end %>
