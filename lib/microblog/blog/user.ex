@@ -7,7 +7,7 @@ defmodule Microblog.Blog.User do
 
   schema "users" do
     field :user_email, :string
-    field :authorized?, boolean
+    field :authorized?, :boolean
     has_many :messages, Message
     has_many :follows, Follow
     timestamps()
