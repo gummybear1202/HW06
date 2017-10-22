@@ -16,5 +16,6 @@ alias Microblog.Blog.Message
 
 Repo.delete_all(User)
 
-Repo.insert!(%User{user_email: "rosaline@gmail.com"})
-Repo.insert!(%User{user_email: "user1@gmail.com"})
+Repo.insert!(%User{user_email: "rosaline@gmail.com", authorized?: false})
+Repo.insert!(%User{user_email: "user1@gmail.com", authorized?: false})
+Repo.insert!(%User{user_email: "admin@admin.com", authorized?: true})
