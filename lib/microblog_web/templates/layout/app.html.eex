@@ -40,6 +40,7 @@
       </li>
     </ul>
   </div>
+  
   <%= if @current_user do %>
   <span class="text-light">
     <%= @current_user.user_email %> |
@@ -51,7 +52,7 @@
   <input type="text" placeholder="email" class="form-control" name="email">
   <%= submit "Log in", class: "btn btn-primary" %>
   <% end %>
-    <% end %>
+  <% end %>
 </nav>
 
 <div class="container">
