@@ -6,7 +6,9 @@ defmodule MicroblogWeb.MessageController do
 
   def index(conn, _params) do
     messages = Blog.list_messages()
-    render(conn, "index.html", messages: messages)
+
+      changeset = Blog.change_message(%Message{})
+    render(conn, "index.html", messages: messages， changeset: changeset)
   end
 
   def new(conn, _params) do
