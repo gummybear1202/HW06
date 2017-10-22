@@ -31,7 +31,7 @@
       <%= if @current_user do %>
 
       <li class="nav-item">
-        <%= link "I.", to: user_path(@conn, :show, current_user.user_id), class: "nav-link" %>
+        <%= link "I.", to: user_path(@conn, :show, @current_user.id), class: "nav-link" %>
       </li>
       <% end %>
       <!-- For looking at the users this user is following -->
