@@ -6,7 +6,12 @@ defmodule MicroblogWeb.FollowController do
 
   def index(conn, _params) do
     follows = Blog.list_follows()
-    conn |> redirect(to: "/") |> halt()
+    # render(conn, "index.html", follows: follows)
+
+    # show index needs authorization
+    conn
+    |> redirect(to: "/")
+    |> halt()
   end
 
   def new(conn, _params) do

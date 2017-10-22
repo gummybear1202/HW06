@@ -5,8 +5,13 @@ defmodule MicroblogWeb.UserController do
   alias Microblog.Blog.User
 
   def index(conn, _params) do
-    # users = Blog.list_users()
+    users = Blog.list_users()
     # render(conn, "index.html", users: users)
+
+    # show index needs authorization
+    conn
+    |> redirect(to: "/")
+    |> halt()
   end
 
   def new(conn, _params) do
