@@ -77,7 +77,7 @@
       </tbody>
     </table>
 
-    <!-- <span><%= link "New Message", to: message_path(@conn, :new) %></span> -->
+    <span><%= link "New Message", to: message_path(@conn, :new) %></span>
 
 
   </div>
