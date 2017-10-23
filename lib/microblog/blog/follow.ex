@@ -13,6 +13,7 @@ defmodule Microblog.Blog.Follow do
 
   @doc false
   def changeset(%Follow{} = follow, attrs) do
+    # not required when registering
     follow
     |> cast(attrs, [:follower_user_id, :following_user_id])
     |> validate_required([:follower_user_id, :following_user_id])
