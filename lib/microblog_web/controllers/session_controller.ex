@@ -16,7 +16,7 @@ defmodule MicroblogWeb.SessionController do
       conn
       |> put_session(:user_id, nil)
       |> put_flash(:error, "Badd email/password")
-      |> redirect(to: user_path(conn, :index))
+      |> redirect(to: welcome_path(conn, :show))
     end
   end
 
@@ -24,6 +24,6 @@ defmodule MicroblogWeb.SessionController do
     conn
     |> put_session(:user_id, nil)
     |> put_flash(:info, "Logged out")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: welcome_path(conn, :show))
   end
 end

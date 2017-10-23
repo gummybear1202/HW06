@@ -1,0 +1,11 @@
+<div id="welcome" class="container-fluid">
+  <br />
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <h3>Welcome to Microblog!</h3>
+    </div>
+    <div class="col-md-6 mx-auto">
+      <span><%= link "Create Me", to: user_path(@conn, :new),
+      class: "btn btn-primary" %></span>
+    </div>
+  </div>

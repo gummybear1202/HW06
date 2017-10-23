@@ -1,0 +1,9 @@
+<div id="welcome" class="container-fluid">
+  <br />
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <h3>This is dashboard</h3>
+    </div>
+    <div class="col-md-6 mx-auto">
+    </div>
+  </div>
