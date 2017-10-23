@@ -30,8 +30,8 @@ defmodule MicroblogWeb.MessageController do
   def show(conn, %{"id" => id}) do
     message = Blog.get_message!(id)
     current_user = conn.assigns[:current_user]
-    message = Blog.change_message(%Microblog.Blog.Message{user_id: current_user.id})
-    render(conn, "show.html", current_user: current_user, message: message)
+    changeset = Blog.change_message(%Microblog.Blog.Message{user_id: current_user.id})
+    render(conn, "show.html", current_user: current_user, message: message, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
