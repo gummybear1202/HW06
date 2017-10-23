@@ -16,9 +16,8 @@
       </div>
       <% end %>
 
-      <%= hidden_input f, :user_id %>
-      <%= hidden_input f, :message_id %>
-      <%= hidden_input f, :user_email %>
+      <%= hidden_input f, :user_id, value: @current_user.id %>
+      <%= hidden_input f, :user_email, value: @current_user.user_email %>
 
       <div id="msg-field" class="form-group">
         <%= label f, :desc, class: "control-label" %>

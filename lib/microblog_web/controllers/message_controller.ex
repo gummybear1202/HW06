@@ -17,6 +17,7 @@ defmodule MicroblogWeb.MessageController do
   end
 
   def create(conn, %{"message" => message_params}) do
+    IO.inspect(message_params)
     case Blog.create_message(message_params) do
       {:ok, message} ->
         conn
