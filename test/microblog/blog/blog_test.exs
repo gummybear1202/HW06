@@ -68,7 +68,7 @@ defmodule Microblog.BlogTest do
   describe "users" do
     alias Microblog.Blog.User
 
-    @valid_attrs %{user_email: "some user_email", password: "somesome", authorized: false}
+    @valid_attrs %{user_email: "some user_email", password: "somesome", authorized: false, pw_tries: 0}
     @update_attrs %{user_email: "some updated user_email"}
     @invalid_attrs %{user_email: nil, password: nil, authorized: nil, pw_tries: 0}
 
