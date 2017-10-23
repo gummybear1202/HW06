@@ -1,6 +1,7 @@
 <!-- dashboard panel, with all messages  -->
 <div class="container-fluid">
   <div class="row">
+    <%= if @current_user do %>
 
     <div class="col-md-4">
 
@@ -30,46 +31,55 @@
       data-current_email="<%= @current_user.user_email %>"
       data-current_id="<%= @current_user.id %>">
       &nbsp;
-      </div>
-      <% end %>
-
-      <div id="msg-submit" class="form-group">
-      <%= submit "Submit", class: "btn btn-primary" %>
-      </div>
-      <% end %>
-
     </div>
+    <% end %>
 
-    <div class="col-md-8 ml-auto">
+    <div id="msg-submit" class="form-group">
+      <%= submit "Submit", class: "btn btn-primary" %>
+    </div>
+    <% end %>
 
-      <h2>Listing Messages</h2>
+  </div>
 
-      <table id="messages-index-container" class="table">
-        <thead>
-          <tr>
-            <th>Desc</th>
+  <% end %>
 
-            <th>Id</th>
-          </tr>
-        </thead>
-        <tbody>
+  <div class="col-md-8 ml-auto">
+
+    <h2>Listing Messages</h2>
+
+    <table id="messages-index-container" class="table">
+      <thead>
+        <tr>
+          <th>Desc</th>
+
+          <th>Id</th>
+        </tr>
+      </thead>
+      <tbody>
         <%= for message <- @messages do %>
         <tr>
-            <td><%= message.desc %></td>
-            <td><%= message.user_id %></td>
-            <td class="text-right">
-              <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
-              <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
-              <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-            </td>
+          <td><%= message.desc %></td>
+          <td><%= message.user_id %></td>
+          <td class="text-right">
+            <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
+            <p>
+            <%= message.user_id %>
+          </p>
+            <!-- if matchUser?(@current_user, message) do -->
+            <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
+            <!-- end -->
+            <%= if authorized?(@current_user) do %>
+            <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
-      </table>
+    </table>
 
-      <!-- <span><%= link "New Message", to: message_path(@conn, :new) %></span> -->
+    <!-- <span><%= link "New Message", to: message_path(@conn, :new) %></span> -->
 
 
-    </div>
   </div>
+</div>
 </div>
