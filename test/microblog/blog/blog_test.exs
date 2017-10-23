@@ -100,29 +100,29 @@ defmodule Microblog.BlogTest do
       assert {:error, %Ecto.Changeset{}} = Blog.create_user(@invalid_attrs)
     end
 
-    # test "update_user/2 with valid data updates the user" do
-    #   user = user_fixture()
-    #   assert {:ok, user} = Blog.update_user(user, @update_attrs)
-    #   assert %User{} = user
-    #   assert user.user_email == "some updated user_email"
-    # end
+    test "update_user/2 with valid data updates the user" do
+      user = user_fixture()
+      assert {:ok, user} = Blog.update_user(user, @update_attrs)
+      assert %User{} = user
+      assert user.user_email == "some updated user_email"
+    end
 
-    # test "update_user/2 with invalid data returns error changeset" do
-    #   user = user_fixture()
-    #   assert {:error, %Ecto.Changeset{}} = Blog.update_user(user, @invalid_attrs)
-    #   assert user == Blog.get_user!(user.id)
-    # end
+    test "update_user/2 with invalid data returns error changeset" do
+      user = user_fixture()
+      assert {:error, %Ecto.Changeset{}} = Blog.update_user(user, @invalid_attrs)
+      assert user == Blog.get_user!(user.id)
+    end
 
-    # test "delete_user/1 deletes the user" do
-    #   user = user_fixture()
-    #   assert {:ok, %User{}} = Blog.delete_user(user)
-    #   assert_raise Ecto.NoResultsError, fn -> Blog.get_user!(user.id) end
-    # end
-    #
-    # test "change_user/1 returns a user changeset" do
-    #   user = user_fixture()
-    #   assert %Ecto.Changeset{} = Blog.change_user(user)
-    # end
+    test "delete_user/1 deletes the user" do
+      user = user_fixture()
+      assert {:ok, %User{}} = Blog.delete_user(user)
+      assert_raise Ecto.NoResultsError, fn -> Blog.get_user!(user.id) end
+    end
+
+    test "change_user/1 returns a user changeset" do
+      user = user_fixture()
+      assert %Ecto.Changeset{} = Blog.change_user(user)
+    end
   end
 
   describe "follows" do
