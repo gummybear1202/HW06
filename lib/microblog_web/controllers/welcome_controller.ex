@@ -1,4 +1,4 @@
-defmodule MicroblogWeb.FeedController do
+defmodule MicroblogWeb.WelcomeController do
   use MicroblogWeb, :controller
 
   def show(conn, _params) do

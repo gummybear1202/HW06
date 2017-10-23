@@ -40,7 +40,8 @@ defmodule MicroblogWeb.Router do
     delete "/sessions", SessionController, :logout
 
     get "/", PageController, :index
-    get "/:ftag", FeedController, :show
+    get "/feed", FeedController, :show
+    get "/welcome", WelcomeController, :show
   end
 
   # Other scopes may use custom stacks.
