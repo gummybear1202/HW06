@@ -15,7 +15,10 @@
 
 <body>
   <nav class="navbar navbar-light bg-light navbar-expand-md">
-    <a class="navbar-brand" href="#">word.</a>
+    <a class="navbar-brandk">
+      <%= link "Word", to: welcome_path(@conn, :show),
+      class: "nav-link text-dark font-weight-bold"%>
+    </a>
     <button class="navbar-toggler" type="button"
     data-toggle="collapse" data-target="#main-navbar">
     <span class="navbar-toggler-icon"></span>
@@ -25,18 +28,18 @@
     <ul class="navbar-nav mr-auto">
       <!-- News feed -->
       <li class="nav-item">
-        <%= link "new?", to: message_path(@conn, :index), class: "nav-link"%>
+        <%= link "Dashboard", to: message_path(@conn, :index), class: "nav-link"%>
       </li>
       <!-- For looking at the user's own info -->
       <%= if @current_user do %>
 
       <li class="nav-item">
-        <%= link "I.", to: user_path(@conn, :show, @current_user.id), class: "nav-link" %>
+        <%= link "Profile", to: user_path(@conn, :show, @current_user.id), class: "nav-link" %>
       </li>
       <% end %>
       <!-- For looking at the users this user is following -->
       <li class="nav-item">
-        <%= link "You.", to: follow_path(@conn, :index), class: "nav-link" %>
+        <%= link "Chat", to: feed_path(@conn, :show), class: "nav-link" %>
       </li>
     </ul>
   </div>

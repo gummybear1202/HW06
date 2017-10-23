@@ -68,9 +68,9 @@ defmodule Microblog.BlogTest do
   describe "users" do
     alias Microblog.Blog.User
 
-    @valid_attrs %{user_email: "some user_email"}
+    @valid_attrs %{user_email: "some user_email", password: "somesome", authorized: false}
     @update_attrs %{user_email: "some updated user_email"}
-    @invalid_attrs %{user_email: nil}
+    @invalid_attrs %{user_email: nil, password: nil, authorized: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -91,10 +91,10 @@ defmodule Microblog.BlogTest do
     #   assert Blog.get_user!(user.id) == user
     # end
     #
-    # test "create_user/1 with valid data creates a user" do
-    #   assert {:ok, %User{} = user} = Blog.create_user(@valid_attrs)
-    #   assert user.user_email == "some user_email"
-    # end
+    test "create_user/1 with valid data creates a user" do
+      assert {:ok, %User{} = user} = Blog.create_user(@valid_attrs)
+      assert user.user_email == "some user_email"
+    end
 
     test "create_user/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Blog.create_user(@invalid_attrs)
@@ -118,134 +118,12 @@ defmodule Microblog.BlogTest do
     #   assert {:ok, %User{}} = Blog.delete_user(user)
     #   assert_raise Ecto.NoResultsError, fn -> Blog.get_user!(user.id) end
     # end
-    # 
+    #
     # test "change_user/1 returns a user changeset" do
     #   user = user_fixture()
     #   assert %Ecto.Changeset{} = Blog.change_user(user)
     # end
   end
-
-  # describe "messages" do
-  #   alias Microblog.Blog.Message
-  #
-  #   @valid_attrs %{}
-  #   @update_attrs %{}
-  #   @invalid_attrs %{}
-  #
-  #   def message_fixture(attrs \\ %{}) do
-  #     {:ok, message} =
-  #       attrs
-  #       |> Enum.into(@valid_attrs)
-  #       |> Blog.create_message()
-  #
-  #     message
-  #   end
-  #
-  #   test "list_messages/0 returns all messages" do
-  #     message = message_fixture()
-  #     assert Blog.list_messages() == [message]
-  #   end
-  #
-  #   test "get_message!/1 returns the message with given id" do
-  #     message = message_fixture()
-  #     assert Blog.get_message!(message.id) == message
-  #   end
-  #
-  #   test "create_message/1 with valid data creates a message" do
-  #     assert {:ok, %Message{} = message} = Blog.create_message(@valid_attrs)
-  #   end
-  #
-  #   test "create_message/1 with invalid data returns error changeset" do
-  #     assert {:error, %Ecto.Changeset{}} = Blog.create_message(@invalid_attrs)
-  #   end
-  #
-  #   test "update_message/2 with valid data updates the message" do
-  #     message = message_fixture()
-  #     assert {:ok, message} = Blog.update_message(message, @update_attrs)
-  #     assert %Message{} = message
-  #   end
-  #
-  #   test "update_message/2 with invalid data returns error changeset" do
-  #     message = message_fixture()
-  #     assert {:error, %Ecto.Changeset{}} = Blog.update_message(message, @invalid_attrs)
-  #     assert message == Blog.get_message!(message.id)
-  #   end
-  #
-  #   test "delete_message/1 deletes the message" do
-  #     message = message_fixture()
-  #     assert {:ok, %Message{}} = Blog.delete_message(message)
-  #     assert_raise Ecto.NoResultsError, fn -> Blog.get_message!(message.id) end
-  #   end
-  #
-  #   test "change_message/1 returns a message changeset" do
-  #     message = message_fixture()
-  #     assert %Ecto.Changeset{} = Blog.change_message(message)
-  #   end
-  # end
-  #
-  # describe "messages" do
-  #   alias Microblog.Blog.Message
-  #
-  #   @valid_attrs %{desc: "some desc"}
-  #   @update_attrs %{desc: "some updated desc"}
-  #   @invalid_attrs %{desc: nil}
-  #
-  #   def message_fixture(attrs \\ %{}) do
-  #     {:ok, message} =
-  #       attrs
-  #       |> Enum.into(@valid_attrs)
-  #       |> Blog.create_message()
-  #
-  #     message
-  #   end
-  #
-  #   test "list_messages/0 returns all messages" do
-  #     message = message_fixture()
-  #     assert Blog.list_messages() == [message]
-  #   end
-  #
-  #   test "get_message!/1 returns the message with given id" do
-  #     message = message_fixture()
-  #     assert Blog.get_message!(message.id) == message
-  #   end
-  #
-  #   test "create_message/1 with valid data creates a message" do
-  #     assert {:ok, %Message{} = message} = Blog.create_message(@valid_attrs)
-  #     assert message.desc == "some desc"
-  #   end
-  #
-  #   test "create_message/1 with invalid data returns error changeset" do
-  #     assert {:error, %Ecto.Changeset{}} = Blog.create_message(@invalid_attrs)
-  #   end
-  #
-  #   test "update_message/2 with valid data updates the message" do
-  #     message = message_fixture()
-  #     assert {:ok, message} = Blog.update_message(message, @update_attrs)
-  #     assert %Message{} = message
-  #     assert message.desc == "some updated desc"
-  #   end
-  #
-  #   test "update_message/2 with invalid data returns error changeset" do
-  #     message = message_fixture()
-  #     assert {:error, %Ecto.Changeset{}} = Blog.update_message(message, @invalid_attrs)
-  #     assert message == Blog.get_message!(message.id)
-  #   end
-  #
-  #   test "delete_message/1 deletes the message" do
-  #     message = message_fixture()
-  #     assert {:ok, %Message{}} = Blog.delete_message(message)
-  #     assert_raise Ecto.NoResultsError, fn -> Blog.get_message!(message.id) end
-  #   end
-  #
-  #   test "change_message/1 returns a message changeset" do
-  #     message = message_fixture()
-  #     assert %Ecto.Changeset{} = Blog.change_message(message)
-  #   end
-  # end
-  #
-
-
-
 
   describe "follows" do
     alias Microblog.Blog.Follow

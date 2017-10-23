@@ -9,9 +9,14 @@ defmodule MicroblogWeb.UserController do
 
     current_user = conn.assigns[:current_user]
     # show index needs authorization
-
-    if (current_user.authorized) do
-      render(conn, "index.html", users: users)
+    if (current_user != nil) do
+      if (current_user.authorized) do
+        render(conn, "index.html", users: users)
+      else
+        conn
+        |> redirect(to: "/")
+        |> halt()
+      end
     else
       conn
       |> redirect(to: "/")

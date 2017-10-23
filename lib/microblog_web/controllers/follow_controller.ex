@@ -10,8 +10,14 @@ defmodule MicroblogWeb.FollowController do
     current_user = conn.assigns[:current_user]
     # show index needs authorization
 
-    if (current_user.authorized) do
-      render(conn, "index.html", follows: follows)
+    if (current_user != nil) do
+      if (current_user.authorized) do
+        render(conn, "index.html", follows: follows)
+      else
+        conn
+        |> redirect(to: "/")
+        |> halt()
+      end
     else
       conn
       |> redirect(to: "/")
