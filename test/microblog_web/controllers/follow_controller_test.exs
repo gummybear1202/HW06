@@ -15,7 +15,7 @@ defmodule MicroblogWeb.FollowControllerTest do
   describe "index" do
     test "lists all follows", %{conn: conn} do
       conn = get conn, follow_path(conn, :index)
-      assert html_response(conn, 200) =~ "Listing Follows"
+      assert html_response(conn, 302) =~ " <html><body>You are being <a href="/">redirected</a>.</body></html>"
     end
   end
 

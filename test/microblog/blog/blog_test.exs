@@ -70,7 +70,7 @@ defmodule Microblog.BlogTest do
 
     @valid_attrs %{user_email: "some user_email", password: "somesome", authorized: false}
     @update_attrs %{user_email: "some updated user_email"}
-    @invalid_attrs %{user_email: nil, password: nil, authorized: nil}
+    @invalid_attrs %{user_email: nil, password: nil, authorized: nil, pw_tries: 0}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
