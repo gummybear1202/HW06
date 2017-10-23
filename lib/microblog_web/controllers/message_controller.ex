@@ -6,7 +6,9 @@ defmodule MicroblogWeb.MessageController do
 
   def index(conn, _params) do
     messages = Blog.list_messages()
-    render(conn, "index.html", messages: messages)
+    changeset = Blog.change_message(%Message{})
+
+    render(conn, "index.html", messages: messages, changeset: changeset)
   end
 
   def new(conn, _params) do
@@ -15,6 +17,7 @@ defmodule MicroblogWeb.MessageController do
   end
 
   def create(conn, %{"message" => message_params}) do
+    IO.inspect(message_params)
     case Blog.create_message(message_params) do
       {:ok, message} ->
         conn
@@ -27,7 +30,9 @@ defmodule MicroblogWeb.MessageController do
 
   def show(conn, %{"id" => id}) do
     message = Blog.get_message!(id)
-    render(conn, "show.html", message: message)
+    current_user = conn.assigns[:current_user]
+    changeset = Blog.change_message(%Microblog.Blog.Message{user_id: current_user.id})
+    render(conn, "show.html", current_user: current_user, message: message, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do

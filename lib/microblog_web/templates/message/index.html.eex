@@ -1,26 +1,83 @@
-<h2>Listing Messages</h2>
+<!-- dashboard panel, with all messages  -->
+<div class="container-fluid">
+  <div class="row">
+    <%= if @current_user do %>
 
-<table id="messages-index-container" class="table">
-  <thead>
-    <tr>
-      <th>Desc</th>
+    <div class="col-md-4">
 
-      <th>Id</th>
-    </tr>
-  </thead>
-  <tbody>
-  <%= for message <- @messages do %>
-  <tr>
-      <td><%= message.desc %></td>
-      <td><%= message.user_id %></td>
-      <td class="text-right">
-        <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-  </tr>
+      <!-- showing current user and posting new messages -->
+      <!-- create a new message  -->
+      <h2> New Message </h2>
+
+      <%= form_for @changeset, message_path(@conn, :create), fn f -> %>
+      <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+      <% end %>
+
+      <%= hidden_input f, :user_id, value: @current_user.id %>
+      <%= hidden_input f, :user_email, value: @current_user.user_email %>
+
+      <div id="msg-field" class="form-group">
+        <%= label f, :desc, class: "control-label" %>
+        <%= text_input f, :desc, class: "form-control" %>
+        <%= error_tag f, :desc %>
+      </div>
+
+      <%= if @current_user do %>
+      <div id="msg-user"
+      data-current_email="<%= @current_user.user_email %>"
+      data-current_id="<%= @current_user.id %>">
+      &nbsp;
+    </div>
+    <% end %>
+
+    <div id="msg-submit" class="form-group">
+      <%= submit "Submit", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+
+  </div>
+
   <% end %>
-</tbody>
-</table>
 
-<span><%= link "New Message", to: message_path(@conn, :new) %></span>
+  <div class="col-md-8 ml-auto">
+
+    <h2>Listing Messages</h2>
+
+    <table id="messages-index-container" class="table">
+      <thead>
+        <tr>
+          <th>Desc</th>
+
+          <th>Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for message <- @messages do %>
+        <tr>
+          <td><%= message.desc %></td>
+          <td><%= message.user_id %></td>
+          <%= if @current_user do %>
+          <td class="text-right">
+            <span><%= link "Show", to: message_path(@conn, :show, message), class: "btn btn-default btn-xs" %></span>
+            <%= if matchUser?(@current_user, message) do %>
+            <span><%= link "Edit", to: message_path(@conn, :edit, message), class: "btn btn-default btn-xs" %></span>
+            <% end %>
+            <%= if authorized?(@current_user) do %>
+            <span><%= link "Delete", to: message_path(@conn, :delete, message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+            <% end %>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- <span><%= link "New Message", to: message_path(@conn, :new) %></span> -->
+
+
+  </div>
+</div>
+</div>

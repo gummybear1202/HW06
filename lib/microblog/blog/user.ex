@@ -8,6 +8,8 @@ defmodule Microblog.Blog.User do
 
   schema "users" do
     field :user_email, :string
+    field :authorized, :boolean
+
     has_many :messages, Message
     has_many :follows, Follow
     # added for password hash
@@ -24,7 +26,7 @@ defmodule Microblog.Blog.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:user_email, :password, :password_confirmation])
+    |> cast(attrs, [:user_email, :authorized, :password, :password_confirmation])
     |> validate_confirmation(:password)
     |> validate_password(:password)
     |> put_pass_hash()

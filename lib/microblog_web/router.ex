@@ -34,8 +34,6 @@ defmodule MicroblogWeb.Router do
 
     resources "/messages", MessageController
     resources "/users", UserController
-    resources "/followings", FollowingController
-    resources "/followers", FollowerController
     resources "/follows", FollowController
 
     post "/sessions", SessionController, :login

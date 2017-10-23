@@ -6,7 +6,17 @@ defmodule MicroblogWeb.UserController do
 
   def index(conn, _params) do
     users = Blog.list_users()
-    render(conn, "index.html", users: users)
+
+    current_user = conn.assigns[:current_user]
+    # show index needs authorization
+
+    if (current_user.authorized) do
+      render(conn, "index.html", users: users)
+    else
+      conn
+      |> redirect(to: "/")
+      |> halt()
+    end
   end
 
   def new(conn, _params) do
@@ -19,7 +29,7 @@ defmodule MicroblogWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: message_path(conn, :index))
+        |> redirect(to: welcome_path(conn, :show))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

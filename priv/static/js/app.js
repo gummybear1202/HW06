@@ -26961,7 +26961,7 @@ console.log("mu email" + mu_email);
 // let ss_id = ss_msgField.data('msg_id');
 
 // click submit button
-msgSubmit.off("click").on("click").off("keypress").on("keypress", function (event) {
+msgSubmit.off("click").on("click", function (event) {
   triggerPush(mu_id);
 });
 

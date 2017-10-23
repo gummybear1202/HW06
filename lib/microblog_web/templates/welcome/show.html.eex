@@ -2,10 +2,16 @@
   <br />
   <div class="row">
     <div class="col-md-12 mx-auto">
-      <h3>Welcome to Microblog!</h3>
+      <div class="card bg-light mb-3">
+        <h4 class="card-header border-white">Welcome to Microblog!</h4>
+        <div class="card-body">
+          <h4 class="card-title">
+            Already an user? Log in on top!</h4>
+          <p class="card-text">  Or...</p>
+          <span><%= link "Create Me", to: user_path(@conn, :new),
+              class: "btn btn-primary" %></span>
+          </div>
     </div>
     <div class="col-md-6 mx-auto">
-      <span><%= link "Create Me", to: user_path(@conn, :new),
-      class: "btn btn-primary" %></span>
     </div>
   </div>
