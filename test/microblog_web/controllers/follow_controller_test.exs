@@ -1,21 +1,34 @@
+# reference Nat Tuck's test.diff
 defmodule MicroblogWeb.FollowControllerTest do
   use MicroblogWeb.ConnCase
 
   alias Microblog.Blog
+  alias Microblog.Blog.User
 
   @create_attrs %{follower_user_id: "0", following_user_id: "1"}
   @update_attrs %{}
   @invalid_attrs %{}
 
+  def valid_attrs() do
+    {:ok, follower} = Blog.create_user(%{user_email: "some user_email",
+    password: "somesome", authorized: false})
+
+    {:ok, following} = Blog.create_user(%{user_email: "some user_email",
+    password: "somesome", authorized: false})
+  end
+
+
   def fixture(:follow) do
-    {:ok, follow} = Blog.create_follow(@create_attrs)
+    {:ok, follow} = Blog.create_follow(valid_attrs())
     follow
   end
+
 
   describe "index" do
     test "lists all follows", %{conn: conn} do
       conn = get conn, follow_path(conn, :index)
-      assert html_response(conn, 302) =~ " <html><body>You are being <a href="/">redirected</a>.</body></html>"
+
+      assert html_response(conn, 200) =~ "List Follows"
     end
   end
 
@@ -28,7 +41,7 @@ defmodule MicroblogWeb.FollowControllerTest do
 
   describe "create follow" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post conn, follow_path(conn, :create), follow: @create_attrs
+      conn = post conn, follow_path(conn, :create), follow: valid_attrs()
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == follow_path(conn, :show, id)

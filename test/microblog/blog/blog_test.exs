@@ -1,3 +1,4 @@
+# reference Nat Tuck's test.diff
 defmodule Microblog.BlogTest do
   use Microblog.DataCase
 
@@ -80,17 +81,17 @@ defmodule Microblog.BlogTest do
 
       user
     end
-    #
-    # test "list_users/0 returns all users" do
-    #   user = user_fixture()
-    #   assert Blog.list_users() == [user]
-    # end
+    
+    test "list_users/0 returns all users" do
+      user = user_fixture()
+      assert Blog.list_users() == [user]
+    end
 
-    # test "get_user!/1 returns the user with given id" do
-    #   user = user_fixture()
-    #   assert Blog.get_user!(user.id) == user
-    # end
-    #
+    test "get_user!/1 returns the user with given id" do
+      user = user_fixture()
+      assert Blog.get_user!(user.id) == user
+    end
+
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Blog.create_user(@valid_attrs)
       assert user.user_email == "some user_email"
