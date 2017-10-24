@@ -22,7 +22,6 @@ defmodule MicroblogWeb.FollowControllerTest do
   def fixture(:follow) do
 
     {:ok, follow} = Blog.create_follow(valid_attrs())
-    Microblog.Repo.preload(follow, [:user])
   end
 
 
