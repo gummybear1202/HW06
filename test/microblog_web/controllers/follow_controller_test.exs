@@ -19,13 +19,9 @@ defmodule MicroblogWeb.FollowControllerTest do
   end
 
 
-  def fixture(attrs \\ %{}) do
-    {:ok, follow} =
-      attrs
-      |> Enum.into(valid_attrs())
-      |> Blog.create_follow()
+  def fixture(:follow) do
 
-    follow
+    {:ok, follow} = Blog.create_follow(valid_attrs())
     Microblog.Repo.preload(follow, [:user])
   end
 
