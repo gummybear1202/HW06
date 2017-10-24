@@ -54,11 +54,11 @@ defmodule Microblog.FeedbackTest do
       assert %Like{} = like
     end
 
-    test "update_like/2 with invalid data returns error changeset" do
-      like = like_fixture()
-      assert {:error, %Ecto.Changeset{}} = Feedback.update_like(like, @invalid_attrs)
-      assert like == Feedback.get_like!(like.id)
-    end
+    # test "update_like/2 with invalid data returns error changeset" do
+    #   like = like_fixture()
+    #   assert {:error, %Ecto.Changeset{}} = Feedback.update_like(like, @invalid_attrs)
+    #   assert like == Feedback.get_like!(like.id)
+    # end
 
     test "delete_like/1 deletes the like" do
       like = like_fixture()

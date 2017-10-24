@@ -16,7 +16,7 @@ defmodule MicroblogWeb.UserControllerTest do
     test "lists all users", %{conn: conn} do
       conn = get conn, user_path(conn, :index)
       assert html_response(conn, 302) =~
-      "<html><body>You are being <a href=\"/welcome\">redirected</a>.</body></html>"
+      "<html><body>You are being <a href=\"/\">redirected</a>.</body></html>"
     end
   end
 
