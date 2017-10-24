@@ -19,7 +19,7 @@ defmodule MicroblogWeb.FollowControllerTest do
   end
 
 
-  def fixture(:follow) do
+  def fixture(attrs \\ %{}) do
     {:ok, follow} =
       attrs
       |> Enum.into(valid_attrs())
