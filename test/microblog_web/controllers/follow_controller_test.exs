@@ -34,7 +34,7 @@ defmodule MicroblogWeb.FollowControllerTest do
     test "lists all follows", %{conn: conn} do
       conn = get conn, follow_path(conn, :index)
 
-      assert html_response(conn, 302) =~ "<html><body>You are being <a href="/welcome/">redirected</a>.</body></html>"
+      assert html_response(conn, 302) =~ "<html><body>You are being <a href=\"/welcome\">redirected</a>.</body></html>"
     end
   end
 
@@ -84,7 +84,7 @@ defmodule MicroblogWeb.FollowControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn, follow: follow} do
       conn = put conn, follow_path(conn, :update, follow), follow: @invalid_attrs
-      assert html_response(conn, 302) =~ "<html><body>You are being <a href="/follows/1">redirected</a>.</body></html>"
+      assert html_response(conn, 302) =~ "<html><body>You are being <a href=\"/follows/1\">redirected</a>.</body></html>"
     end
   end
 
