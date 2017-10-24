@@ -15,6 +15,7 @@ defmodule MicroblogWeb.FollowControllerTest do
 
     {:ok, following} = Blog.create_user(%{user_email: "some user_email",
     password: "somesome", authorized: false})
+    %{follower_user_id: follower.id, following_user_id: following.id}
   end
 
 
@@ -28,7 +29,7 @@ defmodule MicroblogWeb.FollowControllerTest do
     test "lists all follows", %{conn: conn} do
       conn = get conn, follow_path(conn, :index)
 
-      assert html_response(conn, 200) =~ "List Follows"
+      assert html_response(conn, 302) =~ "<html><body>You are being <a href="/">redirected</a>.</body></html>"
     end
   end
 

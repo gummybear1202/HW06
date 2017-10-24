@@ -69,9 +69,9 @@ defmodule Microblog.BlogTest do
   describe "users" do
     alias Microblog.Blog.User
 
-    @valid_attrs %{user_email: "some user_email", password: "somesome", authorized: false, pw_tries: 0}
+    @valid_attrs %{user_email: "some user_email", password: "somesome", authorized: false}
     @update_attrs %{user_email: "some updated user_email"}
-    @invalid_attrs %{user_email: nil, password: nil, authorized: nil, pw_tries: 0}
+    @invalid_attrs %{user_email: nil, password: nil, authorized: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -81,7 +81,7 @@ defmodule Microblog.BlogTest do
 
       user
     end
-    
+
     test "list_users/0 returns all users" do
       user = user_fixture()
       assert Blog.list_users() == [user]

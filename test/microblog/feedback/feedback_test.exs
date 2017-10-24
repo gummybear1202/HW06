@@ -5,6 +5,7 @@ defmodule Microblog.FeedbackTest do
 
   describe "likes" do
     alias Microblog.Feedback.Like
+    alias Microblog.Blog
     alias Microblog.Blog.User
     alias Microblog.Blog.Message
 
@@ -42,7 +43,7 @@ defmodule Microblog.FeedbackTest do
     test "create_like/1 with valid data creates a like" do
       assert {:ok, %Like{} = like} = Feedback.create_like(valid_attrs())
     end
-    
+
     test "create_like/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Feedback.create_like(@invalid_attrs)
     end
